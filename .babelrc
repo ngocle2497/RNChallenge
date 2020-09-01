@@ -1,0 +1,28 @@
+{
+  "env": {
+      "production": {
+          "plugins": [
+              "transform-remove-console"
+          ]
+      }
+  },
+  "plugins": [
+      [
+        "module-resolver",
+        {
+          "root": ["./"],
+          "alias": {
+              "@assets":"./src/app/assets",
+              "@common":"./src/app/common",
+              "@animated":"./src/app/animated",
+              "@config":"./src/app/config",
+              "@features":"./src/app/features",
+              "@components":"./src/app/library/components",
+              "@utils":"./src/app/library/utils",
+              "@navigation":"./src/app/navigation",
+              "@theme":"./src/app/themes"
+          }
+        }
+      ]
+    ]
+}
