@@ -1,5 +1,5 @@
 import React, { memo } from 'react'
-import { View, Text, StyleSheet, Dimensions, useWindowDimensions, StatusBar, Platform } from 'react-native'
+import { StyleSheet, useWindowDimensions, StatusBar, Platform } from 'react-native'
 import isEqual from 'react-fast-compare';
 import { Block, Img } from '@components';
 import { PanGestureHandler } from 'react-native-gesture-handler';
@@ -25,10 +25,10 @@ const DecayComponent = () => {
     const translateX = useSharedValue(0)
     const translateY = useSharedValue(0)
     const headerHeight = useHeaderHeight()
-    const { top, bottom } = useSafeArea()
+    const { bottom } = useSafeArea()
     const { width, height } = useWindowDimensions()
     const clampX: [number, number] = [0, width - CARD_WIDTH]
-    const clampY: [number, number] = [0, height - headerHeight - CARD_HEIGHT - (Platform.OS === 'android' ? StatusBar.currentHeight ?? 20 : (top + bottom))]
+    const clampY: [number, number] = [0, height - headerHeight - CARD_HEIGHT - (Platform.OS === 'android' ? StatusBar.currentHeight ?? 20 : (bottom))]
     const _onGestureHandler = useAnimatedGestureHandler({
         onStart: (_, ctx) => {
             ctx.startX = translateX.value
@@ -48,7 +48,6 @@ const DecayComponent = () => {
     }))
     return (
         <Block block>
-
             <PanGestureHandler onGestureEvent={_onGestureHandler}>
                 <Animated.View style={[styles.card, boxStyle]}>
                     <Img style={[styles.img]} source={'card1'} />

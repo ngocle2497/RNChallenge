@@ -1,5 +1,5 @@
 import React, { memo } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { StyleSheet } from 'react-native'
 import isEqual from 'react-fast-compare';
 import { Block, Img } from '@components';
 import Animated, { useSharedValue, useAnimatedGestureHandler, useAnimatedStyle, withSpring, useDerivedValue } from 'react-native-reanimated';

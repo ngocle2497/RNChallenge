@@ -1,5 +1,5 @@
 import React, { memo, useMemo } from 'react'
-import { StyleSheet, Image, Dimensions, useWindowDimensions, StatusBar, Platform } from 'react-native'
+import { StyleSheet, Image, useWindowDimensions, StatusBar, Platform } from 'react-native'
 import isEqual from 'react-fast-compare';
 import { images } from '@assets/image';
 import Animated, { useAnimatedGestureHandler, useSharedValue, useAnimatedStyle, withDecay, } from 'react-native-reanimated';
@@ -29,10 +29,10 @@ const styles = StyleSheet.create({
 });
 const BouncingComponent = () => {
     const headerHeight = useHeaderHeight()
-    const { top, bottom } = useSafeArea()
+    const { bottom } = useSafeArea()
     const { width, height } = useWindowDimensions()
     const bounceX = useMemo(() => width - IMAGE_WIDTH, [width])
-    const bounceY = useMemo(() => height - headerHeight - IMAGE_HEIGHT - (Platform.OS === 'android' ? StatusBar.currentHeight ?? 20 : (top + bottom)), [bottom, top, headerHeight, height])
+    const bounceY = useMemo(() => height - headerHeight - IMAGE_HEIGHT - (Platform.OS === 'android' ? StatusBar.currentHeight ?? 20 : (bottom)), [bottom, headerHeight, height])
 
     const translateY = useSharedValue(0)
     const translateX = useSharedValue(0)
@@ -46,7 +46,7 @@ const BouncingComponent = () => {
             translateY.value = clampV2(ctx.startY + event.translationY, 0, bounceY)
         },
         onEnd: ({ velocityX, velocityY }, _) => {
-            translateX.value = withBouncingV2(withDecay({ velocity: velocityX, },), 0, bounceX)
+            translateX.value = withBouncingV2(withDecay({ velocity: velocityX, }), 0, bounceX)
             translateY.value = withBouncingV2(withDecay({ velocity: velocityY, }), 0, bounceY)
         }
     })

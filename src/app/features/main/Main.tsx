@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
-import { View, StyleSheet } from 'react-native'
+import { View, StyleSheet, ScrollView } from 'react-native'
 import isEqual from 'react-fast-compare';
-import { Screen } from '@components';
+import { Screen, Block } from '@components';
 import { APP_COLOR } from '@config';
 import { RowButton } from './components/RowButton';
 import { navigate } from '@navigation/NavigationService';
@@ -27,12 +27,14 @@ const MainComponent = () => {
         }
     }
     return (
-        <Screen scroll statusColor={APP_COLOR} statusBar={'light-content'}>
-            <RowButton img={'spring'} onPress={_onPressItem} index={1} tx={'main:txBouncing'} />
-            <RowButton img={'clock'} onPress={_onPressItem} index={2} tx={'main:timing:txTiming'} />
-            <RowButton img={'dynamic'} onPress={_onPressItem} index={3} tx={'main:txDynamicSpring'} />
-            <RowButton img={'decay'} onPress={_onPressItem} index={4} tx={'main:txDecay'} />
-        </Screen>
+        <Block block>
+            <ScrollView showsVerticalScrollIndicator={false}>
+                <RowButton img={'spring'} onPress={_onPressItem} index={1} tx={'main:txBouncing'} />
+                <RowButton img={'clock'} onPress={_onPressItem} index={2} tx={'main:timing:txTiming'} />
+                <RowButton img={'dynamic'} onPress={_onPressItem} index={3} tx={'main:txDynamicSpring'} />
+                <RowButton img={'decay'} onPress={_onPressItem} index={4} tx={'main:txDecay'} />
+            </ScrollView>
+        </Block>
     )
 }
 
