@@ -1,5 +1,6 @@
-import React, { memo } from 'react'
+import React, { memo, useEffect } from 'react'
 import isEqual from 'react-fast-compare'
+import SplashScreen from 'react-native-splash-screen'
 import { createStackNavigator, StackNavigationOptions, TransitionPresets } from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native'
 import { navigationRef } from './NavigationService'
@@ -8,6 +9,9 @@ import { Main } from '@features/main/Main'
 import { StyleSheet } from 'react-native'
 import { Bouncing } from '@features/children/bouncing/Bouncing'
 import { Icon } from '@components'
+import { Timing } from '@features/children/timing/Timing'
+import { DynamicSpring } from '@features/children/dynamicSpring/DynamicSpring'
+import { Decay } from '@features/children/decay/Decay'
 
 const MainStack = createStackNavigator()
 const styles = StyleSheet.create({
@@ -31,13 +35,28 @@ const mainOption: StackNavigationOptions = {
 const bouncingOption: StackNavigationOptions = {
     headerTitle: "Animated Bouncing"
 }
+const timingOption: StackNavigationOptions = {
+    headerTitle: "Animated Timing"
+}
+const dynamicOption: StackNavigationOptions = {
+    headerTitle: "Animated Dynamic"
+}
+const decayOption: StackNavigationOptions = {
+    headerTitle: "Animated Decay"
+}
 
 const AppNavigationComponent = () => {
+    useEffect(() => {
+        SplashScreen.hide()
+    }, [])
     return (
         <NavigationContainer ref={navigationRef}>
             <MainStack.Navigator screenOptions={{ gestureEnabled: true, ...TransitionPresets.SlideFromRightIOS }}>
                 <MainStack.Screen options={StyleSheet.flatten([baseOption, mainOption])} name={APP_SCREEN.MAIN} component={Main} />
                 <MainStack.Screen options={StyleSheet.flatten([baseOption, bouncingOption])} name={APP_SCREEN.BOUNCING} component={Bouncing} />
+                <MainStack.Screen options={StyleSheet.flatten([baseOption, timingOption])} name={APP_SCREEN.TIMING} component={Timing} />
+                <MainStack.Screen options={StyleSheet.flatten([baseOption, dynamicOption])} name={APP_SCREEN.DYNAMIC_SPRING} component={DynamicSpring} />
+                <MainStack.Screen options={StyleSheet.flatten([baseOption, decayOption])} name={APP_SCREEN.DECAY} component={Decay} />
             </MainStack.Navigator>
         </NavigationContainer>
     )

@@ -35,7 +35,10 @@ export const images = {
     card33: require('./source/card32.png'),
     card34: require('./source/card33.png'),
     card35: require('./source/card34.png'),
-    spring: require('./source/spring.png')
+    spring: require('./source/spring.png'),
+    clock: require('./source/clock.png'),
+    dynamic: require('./source/dynamic.png'),
+    decay: require('./source/decay.png'),
 };
 
 export type ImageTypes = keyof typeof images;

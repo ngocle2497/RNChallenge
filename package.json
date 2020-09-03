@@ -5,6 +5,8 @@
   "scripts": {
     "android": "cd android &&./gradlew clean && cd.. && npx react-native run-android ",
     "ios": "react-native run-ios",
+    "apk-prod": "cd android &&./gradlew clean && ./gradlew assembleRelease && cd .. && yarn code-push-android-prod",
+    "code-push-android-prod": "code-push release-react RNChallenge-Android android -d Production",
     "start": "npx react-native start --reset-cache",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
@@ -19,11 +21,13 @@
     "react-fast-compare": "^3.2.0",
     "react-i18next": "^11.7.2",
     "react-native": "0.62.2",
+    "react-native-code-push": "^6.3.0",
     "react-native-fast-image": "^8.3.2",
     "react-native-gesture-handler": "^1.7.0",
     "react-native-reanimated": "^2.0.0-alpha.5",
     "react-native-safe-area-context": "^3.1.7",
-    "react-native-screens": "^2.10.1"
+    "react-native-screens": "^2.10.1",
+    "react-native-splash-screen": "^3.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",

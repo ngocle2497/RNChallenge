@@ -1,14 +1,15 @@
-import React, { memo, useCallback, useState, useMemo } from 'react'
-import { View, StyleSheet, Image, Dimensions, LayoutChangeEvent } from 'react-native'
+import React, { memo, useMemo } from 'react'
+import { StyleSheet, Image, Dimensions, useWindowDimensions, StatusBar, Platform } from 'react-native'
 import isEqual from 'react-fast-compare';
 import { images } from '@assets/image';
 import Animated, { useAnimatedGestureHandler, useSharedValue, useAnimatedStyle, withDecay, } from 'react-native-reanimated';
 import { PanGestureHandler } from 'react-native-gesture-handler'
 import { clampV2, withBouncingV2 } from '@animated';
 import { useSafeArea } from 'react-native-safe-area-context';
+import { useHeaderHeight } from '@react-navigation/stack';
+import { Block } from '@components';
 const IMAGE_WIDTH = 250
 const IMAGE_HEIGHT = 150
-const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window')
 
 const styles = StyleSheet.create({
     container: {
@@ -26,18 +27,12 @@ const styles = StyleSheet.create({
         height: '100%'
     }
 });
-/**
- * option 1
- */
-const bounceX = SCREEN_WIDTH - IMAGE_WIDTH
-const bounceY = SCREEN_HEIGHT - IMAGE_HEIGHT
 const BouncingComponent = () => {
-    const [sizeWrap, setSizeWrap] = useState({ width: 0, height: 0 })
-    /**
-     * option 2
-     */
-    // const bounceX = useMemo(() => sizeWrap.width - IMAGE_WIDTH, [sizeWrap])
-    // const bounceY = useMemo(() => sizeWrap.height - IMAGE_HEIGHT, [sizeWrap])
+    const headerHeight = useHeaderHeight()
+    const { top, bottom } = useSafeArea()
+    const { width, height } = useWindowDimensions()
+    const bounceX = useMemo(() => width - IMAGE_WIDTH, [width])
+    const bounceY = useMemo(() => height - headerHeight - IMAGE_HEIGHT - (Platform.OS === 'android' ? StatusBar.currentHeight ?? 20 : (top + bottom)), [bottom, top, headerHeight, height])
 
     const translateY = useSharedValue(0)
     const translateX = useSharedValue(0)
@@ -55,22 +50,19 @@ const BouncingComponent = () => {
             translateY.value = withBouncingV2(withDecay({ velocity: velocityY, }), 0, bounceY)
         }
     })
-    const _onLayout = useCallback(({ nativeEvent: { layout: { height, width } } }: LayoutChangeEvent) => {
-        setSizeWrap({ width, height })
-    }, [])
     const cardStyle = useAnimatedStyle(() => {
         return {
             transform: [{ translateX: translateX.value }, { translateY: translateY.value }]
         }
     })
     return (
-        <View style={[styles.container]} onLayout={_onLayout}>
+        <Block block color={'#FFFFFF'}>
             <PanGestureHandler {...{ onGestureEvent }}>
                 <Animated.View style={[styles.wrapImg, cardStyle]}>
                     <Image style={[styles.img]} source={images['card1']} />
                 </Animated.View>
             </PanGestureHandler>
-        </View>
+        </Block>
     )
 }
 

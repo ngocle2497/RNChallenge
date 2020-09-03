@@ -13,7 +13,15 @@ const MainComponent = () => {
             case 1:
                 navigate(APP_SCREEN.BOUNCING)
                 break;
-
+            case 2:
+                navigate(APP_SCREEN.TIMING)
+                break;
+            case 3:
+                navigate(APP_SCREEN.DYNAMIC_SPRING)
+                break;
+            case 4:
+                navigate(APP_SCREEN.DECAY)
+                break;
             default:
                 break;
         }
@@ -21,6 +29,9 @@ const MainComponent = () => {
     return (
         <Screen scroll statusColor={APP_COLOR} statusBar={'light-content'}>
             <RowButton img={'spring'} onPress={_onPressItem} index={1} tx={'main:txBouncing'} />
+            <RowButton img={'clock'} onPress={_onPressItem} index={2} tx={'main:timing:txTiming'} />
+            <RowButton img={'dynamic'} onPress={_onPressItem} index={3} tx={'main:txDynamicSpring'} />
+            <RowButton img={'decay'} onPress={_onPressItem} index={4} tx={'main:txDecay'} />
         </Screen>
     )
 }
