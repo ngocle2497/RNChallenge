@@ -1,7 +1,25 @@
 export const icons = {
     default: null,
     arrowRight:require('./source/arrow-right.png'),
-    arrowLeft:require('./source/arrow-left.png')
+    arrowLeft:require('./source/arrow-left.png'),
+    plus: require('./source/plus.png'),
+    clock: require('./source/clock.png'),
+    vibrate: require('./source/vibrate.png'),
+    wifi: require('./source/wifi.png'),
+    power: require('./source/power.png'),
+    signal: require('./source/signal.png'),
+    wi_fi:require('./source/wi_fi.png'),
+    ring:require('./source/ring.png'),
+    flash:require('./source/flash.png'),
+    save_power:require('./source/save_power.png'),
+    data:require('./source/data.png'),
+    bluetooth:require('./source/bluetooth.png'),
+    moon:require('./source/moon.png'),
+    air_mode:require('./source/air_mode.png'),
+    location:require('./source/location.png'),
+    rotate:require('./source/rotate.png'),
+    share_data:require('./source/share_data.png'),
+    auto_light:require('./source/light_auto.png'),
 };
 
 export type IconTypes = keyof typeof icons;

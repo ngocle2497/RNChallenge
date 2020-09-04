@@ -39,6 +39,10 @@ export const images = {
     clock: require('./source/clock.png'),
     dynamic: require('./source/dynamic.png'),
     decay: require('./source/decay.png'),
+    story_fb: require('./source/story-fb.png'),
+    picker: require('./source/picker.png'),
+    jelly: require('./source/Jelly.png'),
+    transition: require('./source/transition.png'),
 };
 
 export type ImageTypes = keyof typeof images;

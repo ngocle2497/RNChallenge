@@ -8,7 +8,25 @@
             "txTiming": "Timing",
             "txChange": "Change"
         },
-        "txDynamicSpring":"DynamicSpring",
-        "txDecay":"Decay"
+        "txDynamicSpring": "Dynamic Spring",
+        "txDecay": "Decay",
+        "txStoryFacebook": "Story Facebook",
+        "txPicker": "Wheel Picker",
+        "txJelly": "Jelly List",
+        "transition": {
+            "txTransition": "Transition",
+            "txWiFi": "WiFi",
+            "txRing": "Chuông",
+            "txFlash": "Đèn pin",
+            "txSavePower": "Trình tiết kiệm pin",
+            "txData": "Dữ liệu di động",
+            "txBluetooth": "Bluetooth",
+            "txMoon": "Không làm phiền",
+            "txAirPlan": "Chế độ máy bay",
+            "txLocation": "Vị trí",
+            "txRotate": "Tự động xoay",
+            "txShareData": "Điểm phát sóng",
+            "txLightAuto": "Độ sáng thích ứng"
+        }
     }
 }

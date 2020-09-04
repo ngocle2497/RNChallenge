@@ -117,3 +117,23 @@ export const withBouncingV2 = (decayAnimation: any, lowerValue: number, upperVal
         };
     })
 }
+export const min = (...args: number[]) => {
+    'worklet';
+    return args.reduce((acc, arg) => Math.min(acc, arg));
+}
+
+export const snapPoint = (
+    value: number,
+    velocity: number,
+    points: number[]
+) => {
+    'worklet';
+    const point = value + velocity * 0.2;
+    const diffPoint = (p: number) => Math.abs(point - p);
+    const deltas = points.map((p) => diffPoint(p));
+    const minDelta = min(...deltas);
+    return points.reduce(
+        (acc, p) => diffPoint(p) === minDelta ? p : acc,
+        0
+    );
+};
