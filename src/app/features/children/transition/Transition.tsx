@@ -1,11 +1,11 @@
 import React, { memo } from 'react'
 import { StyleSheet, useWindowDimensions } from 'react-native'
 import isEqual from 'react-fast-compare';
-import { Block, Text, Icon, SizeBox } from '@components';
+import { Block } from '@components';
 import { PanGestureHandler } from 'react-native-gesture-handler';
-import Animated, { useAnimatedGestureHandler, useAnimatedStyle, useSharedValue, useDerivedValue, withTiming, interpolateNode, Extrapolate, interpolate } from 'react-native-reanimated';
+import Animated, { useAnimatedGestureHandler, useAnimatedStyle, useSharedValue, useDerivedValue, withTiming, Extrapolate, interpolate } from 'react-native-reanimated';
 import { Header } from './Header';
-import { snapPoint, clampV2 } from '@animated';
+import { clampV2 } from '@animated';
 import { Bottom } from './Bottom';
 import { ButtonIcon, WRAP_BUTTON_HEIGHT } from './ButtonIcon';
 import { CenterFeature, MARGIN_TOP_ROW } from './CenterFeature';
@@ -108,14 +108,6 @@ const TransitionComponent = () => {
                             <Animated.View style={[button6Style]}>
                                 <ButtonIcon progress={progress} icon={'bluetooth'} tx={'main:transition:txBluetooth'} />
                             </Animated.View>
-                            {/* <Animated.View style={[styles.row, rowStyle]}>
-                                <Animated.View style={[button5Style]}>
-                                    <ButtonIcon progress={progress} icon={'data'} tx={'main:transition:txData'} />
-                                </Animated.View>
-                                <Animated.View style={[button6Style]}>
-                                    <ButtonIcon progress={progress} icon={'bluetooth'} tx={'main:transition:txBluetooth'} />
-                                </Animated.View>
-                            </Animated.View> */}
                         </Block>
                         <CenterFeature {...{ progress }} />
                     </Block>
