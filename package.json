@@ -5,8 +5,8 @@
   "scripts": {
     "android": "cd android &&./gradlew clean && cd.. && npx react-native run-android ",
     "ios": "react-native run-ios",
-    "apk": "cd android &&./gradlew clean && ./gradlew assembleRelease && cd .. && yarn code-push-android-prod",
-    "code-push-android-prod": "code-push release-react RNChallenge-Android android -d Production",
+    "apk": "cd android &&./gradlew clean && ./gradlew assembleRelease && cd .. ",
+    "code-push-android": "code-push release-react RNChallenge-Android android -d Production",
     "pod": "cd ios && pod install && cd ..",
     "start": "npx react-native start --reset-cache",
     "test": "jest",

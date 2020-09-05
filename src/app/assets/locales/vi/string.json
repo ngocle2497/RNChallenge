@@ -27,6 +27,7 @@
             "txRotate": "Tự động xoay",
             "txShareData": "Điểm phát sóng",
             "txLightAuto": "Độ sáng thích ứng"
-        }
+        },
+        "txWavy": "Wavy Circle Loading"
     }
 }

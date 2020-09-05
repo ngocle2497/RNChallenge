@@ -43,6 +43,7 @@ export const images = {
     picker: require('./source/picker.png'),
     jelly: require('./source/Jelly.png'),
     transition: require('./source/transition.png'),
+    wavy: require('./source/wavy.png'),
 };
 
 export type ImageTypes = keyof typeof images;

@@ -34,6 +34,9 @@ const MainComponent = () => {
             case 8:
                 navigate(APP_SCREEN.TRANSITION)
                 break;
+            case 9:
+                navigate(APP_SCREEN.WAVY)
+                break;
             default:
                 break;
         }
@@ -49,6 +52,7 @@ const MainComponent = () => {
                 <RowButton img={'picker'} onPress={_onPressItem} index={6} tx={'main:txPicker'} />
                 <RowButton img={'jelly'} onPress={_onPressItem} index={7} tx={'main:txJelly'} />
                 <RowButton img={'transition'} onPress={_onPressItem} index={8} tx={'main:transition:txTransition'} />
+                <RowButton img={'wavy'} onPress={_onPressItem} index={9} tx={'main:txWavy'} />
             </ScrollView>
         </Block>
     )

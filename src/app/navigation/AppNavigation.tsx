@@ -17,6 +17,7 @@ import { FacebookStory } from '@features/children/storyFacebook/StoryFacebook'
 import { Wheel } from '@features/children/picker/Wheel'
 import { Jelly } from '@features/children/jelly/Jelly'
 import { Transition } from '@features/children/transition/Transition'
+import { WavyLoading } from '@features/children/wavyLoading/WavyLoading'
 
 const MainStack = createStackNavigator()
 const styles = StyleSheet.create({
@@ -63,6 +64,9 @@ const jellyOption: StackNavigationOptions = {
 const transitionOption: StackNavigationOptions = {
     headerTitle: "Transition"
 }
+const wavyOption: StackNavigationOptions = {
+    headerTitle: "Wavy Circle Loading"
+}
 const AppNavigationComponent = () => {
     useEffect(() => {
         SplashScreen.hide()
@@ -80,6 +84,7 @@ const AppNavigationComponent = () => {
                 <MainStack.Screen options={StyleSheet.flatten([baseOption, wheelOption])} name={APP_SCREEN.WHEEL_PICKER} component={Wheel} />
                 <MainStack.Screen options={StyleSheet.flatten([baseOption, jellyOption])} name={APP_SCREEN.JELLY_LIST} component={Jelly} />
                 <MainStack.Screen options={StyleSheet.flatten([baseOption, transitionOption])} name={APP_SCREEN.TRANSITION} component={Transition} />
+                <MainStack.Screen options={StyleSheet.flatten([baseOption, wavyOption])} name={APP_SCREEN.WAVY} component={WavyLoading} />
             </MainStack.Navigator>
         </NavigationContainer>
     )
