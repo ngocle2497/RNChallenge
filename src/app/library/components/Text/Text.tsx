@@ -49,6 +49,9 @@ const TextComponent = (props: TextProps) => {
     textAlignVertical,
     textTransform,
     textAlign,
+    fontStyle,
+    letterSpacing,
+    lineHeight,
     style: styleOverride = {},
     ...rest
   } = props;
@@ -85,6 +88,9 @@ const TextComponent = (props: TextProps) => {
           alignSelf && { alignSelf },
           textTransform && { textTransform },
           textAlignVertical && { textAlignVertical },
+          fontStyle && { fontStyle },
+          letterSpacing && { letterSpacing },
+          lineHeight && { lineHeight },
           enhance([styleOverride]),
         ] as StyleProp<TextStyle>,
       ]),

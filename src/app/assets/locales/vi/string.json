@@ -28,6 +28,27 @@
             "txShareData": "Điểm phát sóng",
             "txLightAuto": "Độ sáng thích ứng"
         },
-        "txWavy": "Wavy Circle Loading"
+        "txWavy": "Wavy Circle Loading",
+        "telegram": {
+            "txTelegram": "Telegram header",
+            "txAccount": "Account",
+            "txOnline": "online",
+            "txTapToChangePhone": "Tap to change phone number",
+            "txUserName": "UserName",
+            "txBio": "Bio",
+            "txSetting": "Settings",
+            "txNotification": "Notifications and Sounds",
+            "txSecurity": "Privacy and Security",
+            "txData": "Data and Storage",
+            "txChatSetting": "Chat Settings",
+            "txFolder": "Folders",
+            "txDevice": "Devices",
+            "txLanguage": "Language",
+            "txHelp": "Help",
+            "txAsk": "Ask a Question",
+            "txFAQ": "Telegram FAQ",
+            "txPrivacy": "Privacy Policy",
+            "txVersion": "Telegram for Android v7.0.1 (2065) arm64-v8a"
+        }
     }
 }

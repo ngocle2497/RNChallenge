@@ -1,11 +1,10 @@
 import React, { memo } from 'react'
-import { View, StyleSheet, ScrollView } from 'react-native'
+import { ScrollView } from 'react-native'
 import isEqual from 'react-fast-compare';
-import { Screen, Block } from '@components';
-import { APP_COLOR } from '@config';
 import { RowButton } from './components/RowButton';
 import { navigate } from '@navigation/NavigationService';
 import { APP_SCREEN } from '@navigation/ScreenTypes';
+import { Block } from '@components';
 
 const MainComponent = () => {
     const _onPressItem = (index: number) => {
@@ -37,6 +36,9 @@ const MainComponent = () => {
             case 9:
                 navigate(APP_SCREEN.WAVY)
                 break;
+            case 10:
+                navigate(APP_SCREEN.TELEGRAM)
+                break;
             default:
                 break;
         }
@@ -53,6 +55,7 @@ const MainComponent = () => {
                 <RowButton img={'jelly'} onPress={_onPressItem} index={7} tx={'main:txJelly'} />
                 <RowButton img={'transition'} onPress={_onPressItem} index={8} tx={'main:transition:txTransition'} />
                 <RowButton img={'wavy'} onPress={_onPressItem} index={9} tx={'main:txWavy'} />
+                <RowButton img={'telegram'} onPress={_onPressItem} index={10} tx={'main:telegram:txTelegram'} />
             </ScrollView>
         </Block>
     )

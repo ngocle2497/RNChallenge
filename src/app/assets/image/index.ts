@@ -1,4 +1,5 @@
 export const images = {
+    avatar: require('./source/avatar.jpg'),
     default: require('./source/default.png'),
     card1: require('./source/card1.png'),
     card2: require('./source/card2.png'),
@@ -44,6 +45,7 @@ export const images = {
     jelly: require('./source/Jelly.png'),
     transition: require('./source/transition.png'),
     wavy: require('./source/wavy.png'),
+    telegram: require('./source/telegram.png'),
 };
 
 export type ImageTypes = keyof typeof images;

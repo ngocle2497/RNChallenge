@@ -18,6 +18,7 @@ import { Wheel } from '@features/children/picker/Wheel'
 import { Jelly } from '@features/children/jelly/Jelly'
 import { Transition } from '@features/children/transition/Transition'
 import { WavyLoading } from '@features/children/wavyLoading/WavyLoading'
+import { Telegram } from '@features/children/telegram/Telegram'
 
 const MainStack = createStackNavigator()
 const styles = StyleSheet.create({
@@ -67,6 +68,10 @@ const transitionOption: StackNavigationOptions = {
 const wavyOption: StackNavigationOptions = {
     headerTitle: "Wavy Circle Loading"
 }
+const telegramOption: StackNavigationOptions = {
+    headerTitle: "Telegram Header",
+    headerShown: false
+}
 const AppNavigationComponent = () => {
     useEffect(() => {
         SplashScreen.hide()
@@ -85,6 +90,7 @@ const AppNavigationComponent = () => {
                 <MainStack.Screen options={StyleSheet.flatten([baseOption, jellyOption])} name={APP_SCREEN.JELLY_LIST} component={Jelly} />
                 <MainStack.Screen options={StyleSheet.flatten([baseOption, transitionOption])} name={APP_SCREEN.TRANSITION} component={Transition} />
                 <MainStack.Screen options={StyleSheet.flatten([baseOption, wavyOption])} name={APP_SCREEN.WAVY} component={WavyLoading} />
+                <MainStack.Screen options={StyleSheet.flatten([baseOption, telegramOption])} name={APP_SCREEN.TELEGRAM} component={Telegram} />
             </MainStack.Navigator>
         </NavigationContainer>
     )
