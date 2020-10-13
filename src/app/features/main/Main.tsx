@@ -39,6 +39,9 @@ const MainComponent = () => {
             case 10:
                 navigate(APP_SCREEN.TELEGRAM)
                 break;
+            case 11:
+                navigate(APP_SCREEN.CIRCLE_MENU)
+                break;
             default:
                 break;
         }
@@ -56,6 +59,7 @@ const MainComponent = () => {
                 <RowButton img={'transition'} onPress={_onPressItem} index={8} tx={'main:transition:txTransition'} />
                 <RowButton img={'wavy'} onPress={_onPressItem} index={9} tx={'main:txWavy'} />
                 <RowButton img={'telegram'} onPress={_onPressItem} index={10} tx={'main:telegram:txTelegram'} />
+                <RowButton img={'menu'} onPress={_onPressItem} index={11} tx={'main:circleMenu:txCircle'} />
             </ScrollView>
         </Block>
     )

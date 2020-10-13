@@ -49,6 +49,9 @@
             "txFAQ": "Telegram FAQ",
             "txPrivacy": "Privacy Policy",
             "txVersion": "Telegram for Android v7.0.1 (2065) arm64-v8a"
+        },
+        "circleMenu": {
+            "txCircle": "Circle Menu"
         }
     }
 }
