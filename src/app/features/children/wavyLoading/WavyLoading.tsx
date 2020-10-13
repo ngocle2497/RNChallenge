@@ -127,7 +127,6 @@ const CircleChildren = memo(({ index, started }: CircleChildrenProps) => {
 }, isEqual)
 
 const WavyLoadingComponent = () => {
-    const progress = useSharedValue(0)
     const [started, setStarted] = useState(false)
     useEffect(() => {
         setStarted(true)

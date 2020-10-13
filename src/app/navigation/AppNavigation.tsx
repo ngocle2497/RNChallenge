@@ -74,8 +74,7 @@ const telegramOption: StackNavigationOptions = {
     headerShown: false
 }
 const circleMenuOption: StackNavigationOptions = {
-    headerTitle: "Circle Menu",
-    headerShown: false
+    headerTitle: "Circle Menu"
 }
 
 const AppNavigationComponent = () => {
