@@ -1,4 +1,4 @@
-import React, { memo, useMemo } from 'react'
+import React, { memo } from 'react'
 import isEqual from 'react-fast-compare';
 import { Svg, Path } from 'react-native-svg'
 import { ItemMenu } from './type';
@@ -6,11 +6,6 @@ import { SIZE_MENU } from './constant'
 import { StyleSheet } from 'react-native';
 import { Text } from '@components';
 
-const styles = StyleSheet.create({
-    sgv: {
-        position: 'absolute'
-    }
-})
 
 interface Point {
     x: number;
@@ -24,7 +19,7 @@ interface ItemTabProps {
     centerPoint: Point;
 }
 
-const ItemMenuComponent = ({ index, centerPoint, sizeArr, item }: ItemTabProps) => {
+const ItemMenuComponent = ({ index, sizeArr, item }: ItemTabProps) => {
 
     const alpha = (Math.PI * 2) / sizeArr;
     const x = SIZE_MENU - Math.cos(alpha) * SIZE_MENU
@@ -33,7 +28,6 @@ const ItemMenuComponent = ({ index, centerPoint, sizeArr, item }: ItemTabProps) 
     return (
         <Svg style={[StyleSheet.absoluteFill, { transform: [{ rotate: `${(index * 360 / sizeArr + 360 / sizeArr)}deg` }] }]} width={SIZE_MENU * 2} height={SIZE_MENU * 2}>
             <Path d={d} fill={item.color} />
-            {/* <Text>{index}</Text> */}
         </Svg>
     )
 }

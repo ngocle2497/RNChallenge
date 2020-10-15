@@ -50,6 +50,9 @@
             "txPrivacy": "Privacy Policy",
             "txVersion": "Telegram for Android v7.0.1 (2065) arm64-v8a"
         },
+        "shareElement": {
+            "txShareElement":"Share Element Transition"
+        },
         "circleMenu": {
             "txCircle": "Circle Menu"
         }

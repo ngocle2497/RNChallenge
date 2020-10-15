@@ -58,14 +58,19 @@ const dataMenu: ItemMenu[] = [
 const CircleMenuComponent = () => {
     const _wrapFling = useRef(null)
     const selectedIndex = useSharedValue(0)
+    const [indexMenu, setIndexMenu] = useState(0)
     const _leftFlingGesture = useAnimatedGestureHandler({
         onActive: () => {
-            selectedIndex.value = withSpring(Math.round(selectedIndex.value + 1))
+            const newValue = Math.round(selectedIndex.value + 1)
+            selectedIndex.value = withSpring(newValue)
+            setIndexMenu(-newValue)
         }
     })
     const _rightFlingGesture = useAnimatedGestureHandler({
         onActive: () => {
+            const newValue = Math.round(selectedIndex.value - 1)
             selectedIndex.value = withSpring(Math.round(selectedIndex.value - 1))
+            setIndexMenu(-newValue)
         }
     })
     const _renderItem = useCallback((item: ItemMenu, index: number, arr: ItemMenu[]) => {
@@ -73,11 +78,15 @@ const CircleMenuComponent = () => {
             <ItemTab {...{ item, index, sizeArr: arr.length, centerPoint: { x: SIZE_MENU, y: SIZE_MENU } }} key={item.id.toString()} />
         )
     }, [dataMenu])
+    const _handleTab = (index: number) => {
+        return index < 0 ? dataMenu[dataMenu.length + index] : dataMenu[index]
+    }
     const menuStyle = useAnimatedStyle(() => ({
         transform: [{ rotate: `${interpolate(selectedIndex.value, [0, 1], [0, 360 / dataMenu.length])}deg` }]
     }))
     return (
         <Block block justifyContent={'flex-end'} middle>
+            <Text>{_handleTab(indexMenu % 6).route}</Text>
             <Animated.View style={[styles.circle, menuStyle]}>
                 {dataMenu.map(_renderItem)}
             </Animated.View>
