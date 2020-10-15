@@ -62,7 +62,7 @@ const MainComponent = () => {
                 <RowButton img={'transition'} onPress={_onPressItem} index={8} tx={'main:transition:txTransition'} />
                 <RowButton img={'wavy'} onPress={_onPressItem} index={9} tx={'main:txWavy'} />
                 <RowButton img={'telegram'} onPress={_onPressItem} index={10} tx={'main:telegram:txTelegram'} />
-                <RowButton img={'share_element'} onPress={_onPressItem} index={11} tx={'main:shareElement:txShareElement'} />
+                {/* <RowButton img={'share_element'} onPress={_onPressItem} index={11} tx={'main:shareElement:txShareElement'} /> */}
                 <RowButton img={'menu'} onPress={_onPressItem} index={12} tx={'main:circleMenu:txCircle'} />
             </ScrollView>
         </Block>
