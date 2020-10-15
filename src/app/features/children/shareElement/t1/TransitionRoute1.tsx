@@ -10,14 +10,14 @@ const Stack = createSharedElementStackNavigator<RootStackParamList1>();
 
 export const TransitionRoute1 = () => {
     return (
-        <Stack.Navigator screenOptions={{ ...TransitionPresets.SlideFromRightIOS }}>
+        <Stack.Navigator screenOptions={{ ...TransitionPresets.SlideFromRightIOS, gestureEnabled: false }}>
             <Stack.Screen name={SHARE_SCREEN.TRANSITION_1_1} component={ListScreen} />
             <Stack.Screen name={SHARE_SCREEN.TRANSITION_1_2} sharedElementsConfig={(route, otherRoute, isShowing) => {
                 return [
                     {
                         id: route.params.data.id,
                         resize: 'clip',
-                        align:'center-top'
+                        align: 'center-top'
                     },
                 ]
             }} component={DetailScreen} />

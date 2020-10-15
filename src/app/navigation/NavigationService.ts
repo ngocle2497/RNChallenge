@@ -9,3 +9,6 @@ export function navigate<RouteName extends keyof RootStackParamList1>
         [RouteName, RootStackParamList1[RouteName]]) {
     navigationRef.current?.navigate(arg[0], arg.length > 1 ? arg[1] : undefined);
 }
+export function navigateJ(name: string, param?: any) {
+    navigationRef.current?.navigate(name, param);
+}

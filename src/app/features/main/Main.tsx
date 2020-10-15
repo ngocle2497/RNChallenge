@@ -2,7 +2,7 @@ import React, { memo } from 'react'
 import { ScrollView } from 'react-native'
 import isEqual from 'react-fast-compare';
 import { RowButton } from './components/RowButton';
-import { navigate } from '@navigation/NavigationService';
+import { navigateJ } from '@navigation/NavigationService';
 import { APP_SCREEN } from '@navigation/ScreenTypes';
 import { Block } from '@components';
 
@@ -10,40 +10,40 @@ const MainComponent = () => {
     const _onPressItem = (index: number) => {
         switch (index) {
             case 1:
-                navigate(APP_SCREEN.BOUNCING)
+                navigateJ(APP_SCREEN.BOUNCING)
                 break;
             case 2:
-                navigate(APP_SCREEN.TIMING)
+                navigateJ(APP_SCREEN.TIMING)
                 break;
             case 3:
-                navigate(APP_SCREEN.DYNAMIC_SPRING)
+                navigateJ(APP_SCREEN.DYNAMIC_SPRING)
                 break;
             case 4:
-                navigate(APP_SCREEN.DECAY)
+                navigateJ(APP_SCREEN.DECAY)
                 break;
             case 5:
-                navigate(APP_SCREEN.FACEBOOK_STORY)
+                navigateJ(APP_SCREEN.FACEBOOK_STORY)
                 break;
             case 6:
-                navigate(APP_SCREEN.WHEEL_PICKER)
+                navigateJ(APP_SCREEN.WHEEL_PICKER)
                 break;
             case 7:
-                navigate(APP_SCREEN.JELLY_LIST)
+                navigateJ(APP_SCREEN.JELLY_LIST)
                 break;
             case 8:
-                navigate(APP_SCREEN.TRANSITION)
+                navigateJ(APP_SCREEN.TRANSITION)
                 break;
             case 9:
-                navigate(APP_SCREEN.WAVY)
+                navigateJ(APP_SCREEN.WAVY)
                 break;
             case 10:
-                navigate(APP_SCREEN.TELEGRAM)
+                navigateJ(APP_SCREEN.TELEGRAM)
                 break;
             case 11:
-                navigate(APP_SCREEN.SHARE_ELEMENT)
+                navigateJ(APP_SCREEN.SHARE_ELEMENT)
                 break;
             case 12:
-                navigate(APP_SCREEN.CIRCLE_MENU)
+                navigateJ(APP_SCREEN.CIRCLE_MENU)
                 break;
             default:
                 break;

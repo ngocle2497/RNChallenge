@@ -88,7 +88,7 @@ const AppNavigationComponent = () => {
     return (
         <NavigationContainer ref={navigationRef} >
             <StatusBar backgroundColor={APP_COLOR} barStyle={'light-content'} />
-            <MainStack.Navigator screenOptions={{ gestureEnabled: true, headerShown: true, headerTintColor: "white",}}>
+            <MainStack.Navigator screenOptions={{ gestureEnabled: true, headerShown: true, headerTintColor: "white", ...TransitionPresets.SlideFromRightIOS }}>
                 <MainStack.Screen options={StyleSheet.flatten([baseOption, mainOption])} name={APP_SCREEN.MAIN} component={Main} />
                 <MainStack.Screen options={StyleSheet.flatten([baseOption, bouncingOption])} name={APP_SCREEN.BOUNCING} component={Bouncing} />
                 <MainStack.Screen options={StyleSheet.flatten([baseOption, timingOption])} name={APP_SCREEN.TIMING} component={Timing} />
@@ -101,7 +101,7 @@ const AppNavigationComponent = () => {
                 <MainStack.Screen options={StyleSheet.flatten([baseOption, wavyOption])} name={APP_SCREEN.WAVY} component={WavyLoading} />
                 <MainStack.Screen options={StyleSheet.flatten([baseOption, telegramOption])} name={APP_SCREEN.TELEGRAM} component={Telegram} />
                 <MainStack.Screen options={StyleSheet.flatten([baseOption, circleMenuOption])} name={APP_SCREEN.CIRCLE_MENU} component={CircleMenu} />
-                <MainStack.Screen options={StyleSheet.flatten([baseOption, shareElementMenuOption])} name={APP_SCREEN.SHARE_ELEMENT} component={ShareElement} />
+                <MainStack.Screen options={StyleSheet.flatten([baseOption, shareElementMenuOption, { gestureEnabled: false }])} name={APP_SCREEN.SHARE_ELEMENT} component={ShareElement} />
             </MainStack.Navigator>
         </NavigationContainer>
     )
