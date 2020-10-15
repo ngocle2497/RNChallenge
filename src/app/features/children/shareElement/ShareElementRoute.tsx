@@ -1,3 +1,4 @@
+import React from 'react'
 import { enableScreens } from 'react-native-screens'
 import { createStackNavigator } from '@react-navigation/stack';
 import { SHARE_SCREEN } from './ScreenType'
@@ -8,7 +9,7 @@ const Stack = createStackNavigator()
 export const ShareElement = () => {
     return (
         <Stack.Navigator screenOptions={{ headerShown: false }}>
-            <Stack.Screen name={SHARE_SCREEN.TRANSITION_1.ROOT} component={TransitionRoute1} />
+            <Stack.Screen name={SHARE_SCREEN.TRANSITION_1_ROOT} component={TransitionRoute1} />
         </Stack.Navigator>
     )
 }
