@@ -45,4 +45,4 @@ const codePushOption = {
     installMode: codePush.InstallMode.ON_NEXT_RESTART,
 };
 export const App = memo(AppComponent, isEqual)
-export const MyApp = codePush(codePushOption)(App);
+export const MyApp = App

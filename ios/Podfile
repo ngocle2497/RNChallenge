@@ -77,11 +77,6 @@ target 'RNChallenge' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-  target 'RNChallengeTests' do
-    inherit! :complete
-    # Pods for testing
-  end
-
   use_native_modules!
 
   # Enables Flipper.
@@ -91,14 +86,5 @@ target 'RNChallenge' do
   add_flipper_pods!
   post_install do |installer|
     flipper_post_install(installer)
-  end
-end
-
-target 'RNChallenge-tvOS' do
-  # Pods for RNChallenge-tvOS
-
-  target 'RNChallenge-tvOSTests' do
-    inherit! :search_paths
-    # Pods for testing
   end
 end

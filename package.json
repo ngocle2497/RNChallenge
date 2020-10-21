@@ -5,6 +5,7 @@
     "scripts": {
         "android": "cd android &&./gradlew clean && cd.. && npx react-native run-android ",
         "ios": "react-native run-ios",
+        "yarn-ios":"yarn && yarn pod",
         "rl-android":"yarn apk && yarn update-android",
         "apk": "cd android &&./gradlew clean && ./gradlew assembleRelease && cd .. ",
         "update-android": "code-push release-react RNChallenge-Android android -d Production",

@@ -110,7 +110,7 @@ const TelegramComponent = () => {
             <Block zIndex={3} position={'absolute'} top={15} left={10}>
                 <Icon style={[styles.icon]} icon={'arrowLeft'} />
             </Block>
-            <Animated.ScrollView onScroll={onScroll} contentContainerStyle={{ paddingTop: SCREEN_HEIGHT * PERCENT_HEIGHT }} overScrollMode={'never'} bounces={false} showsVerticalScrollIndicator={false}>
+            <Animated.ScrollView scrollEventThrottle={16} onScroll={onScroll} contentContainerStyle={{ paddingTop: SCREEN_HEIGHT * PERCENT_HEIGHT }} overScrollMode={'never'} bounces={false} showsVerticalScrollIndicator={false}>
                 <Block color={'white'} shadow shadowConfig={shadowConfig}>
                     <Block paddingTop={10} paddingHorizontal={16}>
                         <Text color={'#3498db'} fontWeight={'bold'} tx={'main:telegram:txAccount'} />
