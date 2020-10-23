@@ -1,4 +1,4 @@
-import Animated, { Clock, Value, cond, or, eq, block, spring, startClock, clockRunning } from "react-native-reanimated";
+import Animated, { Clock, Value, cond, or, eq, block, spring, startClock, clockRunning, set, max, min as min1, add, defined, diff } from "react-native-reanimated";
 import { State } from "react-native-gesture-handler";
 
 
@@ -135,5 +135,16 @@ export const snapPoint = (
     return points.reduce(
         (acc, p) => diffPoint(p) === minDelta ? p : acc,
         0
+    );
+};
+export const diffClamp = (
+    a: Animated.Node<number>,
+    minVal: Animated.Adaptable<number>,
+    maxVal: Animated.Adaptable<number>
+) => {
+    const value = new Value<number>();
+    return set(
+        value,
+        min1(max(add(cond(defined(value), value, a), diff(a)), minVal), maxVal)
     );
 };

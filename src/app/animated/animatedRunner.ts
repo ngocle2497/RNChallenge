@@ -50,7 +50,7 @@ export interface TimingParams {
     from?: Animated.Adaptable<number>;
     to?: Animated.Adaptable<number>;
     duration?: Animated.Adaptable<number>;
-    easing?: Animated.EasingFunction;
+    easing?: Animated.EasingNodeFunction;
 }
 
 export const timing = (params: TimingParams) => {
@@ -99,7 +99,7 @@ export const delayV1 = (node: Animated.Node<number>, duration: number) => {
 };
 export interface LoopProps {
     clock?: Animated.Clock;
-    easing?: Animated.EasingFunction;
+    easing?: Animated.EasingNodeFunction;
     duration?: number;
     boomerang?: boolean;
     autoStart?: boolean;

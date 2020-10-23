@@ -21,6 +21,7 @@ import { WavyLoading } from '@features/children/wavyLoading/WavyLoading'
 import { Telegram } from '@features/children/telegram/Telegram'
 import { CircleMenu } from '@features/children/circleMenu/CircleMenu'
 import { ShareElement } from '@features/children/shareElement/ShareElementRoute'
+import { HeaderAnimationTabScreen } from '@features/children/header/HeaderRoute'
 
 const MainStack = createStackNavigator()
 const styles = StyleSheet.create({
@@ -75,7 +76,8 @@ const telegramOption: StackNavigationOptions = {
     headerShown: false
 }
 const shareElementMenuOption: StackNavigationOptions = {
-    headerTitle: "Share Element"
+    headerTitle: "Share Element",
+    headerShown: false
 }
 const circleMenuOption: StackNavigationOptions = {
     headerTitle: "Circle Menu"

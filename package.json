@@ -5,8 +5,8 @@
     "scripts": {
         "android": "cd android &&./gradlew clean && cd.. && npx react-native run-android ",
         "ios": "react-native run-ios",
-        "yarn-ios":"yarn && yarn pod",
-        "rl-android":"yarn apk && yarn update-android",
+        "yarn-ios": "yarn && yarn pod",
+        "rl-android": "yarn apk && yarn update-android",
         "apk": "cd android &&./gradlew clean && ./gradlew assembleRelease && cd .. ",
         "update-android": "code-push release-react RNChallenge-Android android -d Production",
         "pod": "cd ios && pod install && cd ..",
@@ -34,6 +34,7 @@
         "react-native-shared-element": "^0.7.0",
         "react-native-splash-screen": "^3.2.0",
         "react-native-svg": "^12.1.0",
+        "react-native-tab-view": "^2.15.2",
         "react-navigation-shared-element": "^5.0.0-alpha1"
     },
     "devDependencies": {

@@ -31,6 +31,12 @@ export const icons = {
     ask_q: require('./source/ask_q.png'),
     faq: require('./source/faq.png'),
     privacy: require('./source/privacy.png'),
+    home: require('./source/home.png'),
+    friend: require('./source/friend.png'),
+    video: require('./source/video.png'),
+    shop: require('./source/Shop.png'),
+    notification2: require('./source/notification2.png'),
+    menu: require('./source/Menu.png'),
 };
 
 export type IconTypes = keyof typeof icons;
