@@ -56,8 +56,8 @@
         "circleMenu": {
             "txCircle": "Circle Menu"
         },
-        "header": {
-            "txHeader": "Header Animation"
+        "youtube": {
+            "txTitle": "Youtube Transition"
         }
     }
 }

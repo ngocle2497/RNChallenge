@@ -37,6 +37,8 @@ export const icons = {
     shop: require('./source/Shop.png'),
     notification2: require('./source/notification2.png'),
     menu: require('./source/Menu.png'),
+    expand:require('./source/expand.png'),
+    collapse:require('./source/collapse.png')
 };
 
 export type IconTypes = keyof typeof icons;
