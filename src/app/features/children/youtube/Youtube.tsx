@@ -1,10 +1,10 @@
-import { timing, toRad, withOffset, usePanGestureHandler, clamp, withTransition } from '@animated'
+import { timing, toRad, withOffset, usePanGestureHandler, clamp } from '@animated'
 import { Block, Icon, ImageRemote } from '@components'
-import React, { memo, useCallback, useEffect, useRef, useState } from 'react'
+import React, { memo, useCallback, useRef, useState } from 'react'
 import isEqual from 'react-fast-compare'
-import { View, Text, useWindowDimensions, StyleSheet, LayoutChangeEvent, TouchableOpacity } from 'react-native'
+import { StyleSheet, LayoutChangeEvent, TouchableOpacity } from 'react-native'
 import { PanGestureHandler, State } from 'react-native-gesture-handler'
-import Animated, { and, call, cond, divide, eq, Extrapolate, interpolateNode, lessOrEq, multiply, neq, onChange, or, set, useCode, useValue } from 'react-native-reanimated'
+import Animated, { and, call, cond, eq, Extrapolate, interpolateNode, lessOrEq, neq, set, useCode, useValue } from 'react-native-reanimated'
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -24,14 +24,12 @@ const styles = StyleSheet.create({
     masterContainer: {
         flex: 1,
         alignSelf: 'center',
-        backgroundColor: 'red',
         position: 'absolute',
         overflow: 'hidden'
     }
 })
 
 const MAX_GESTURE = 100
-const MAX_HEIGHT = 80
 
 const You_tubeComponent = () => {
     const _masterGesture = useRef<PanGestureHandler>(null)
@@ -55,21 +53,6 @@ const You_tubeComponent = () => {
         outputRange: [0.9, 1],
         extrapolate: Extrapolate.CLAMP
     })
-
-    const { gestureHandler: gestureMaster, state: stateMaster, translation: translationMaster } = usePanGestureHandler()
-    const translationMasterY = useValue(0)
-    const translateMasterY = clamp(withOffset(translationMaster.y, stateMaster, translationMasterY), 0, sizeView.height * 0.8)
-    const progress = interpolateNode(translateMasterY,
-        {
-            inputRange: [0, sizeView.height * 0.8],
-            outputRange: [0, 1],
-            extrapolate: Extrapolate.CLAMP
-        })
-    const masterW = interpolateNode(progress, { inputRange: [0, 1], outputRange: [sizeView.width, sizeView.width - 30] })
-    const masterH = interpolateNode(progress, { inputRange: [0, 1], outputRange: [sizeView.height, MAX_HEIGHT] })
-    const opacityButton = cond(or(neq(progress, 0), eq(stateMaster, State.ACTIVE)), 0, 1)
-    const bottom = interpolateNode(progress, { inputRange: [0, 1], outputRange: [0, 30] })
-
 
     const _onToggle = useCallback(() => {
         setIsRotate(v => !v)
@@ -101,20 +84,13 @@ const You_tubeComponent = () => {
             set(translateY, timing({ from: translateY, to: 0 })),
         ]),
     ], [isRotate])
+
     useCode(() => [
         cond(eq(stateVideo, State.END), [
             set(translationVideo.x, timing({ from: translationVideo.x, to: 0 })),
             set(translationWrapX, 0),
         ])
     ], [stateVideo])
-
-    useCode(() => [
-        cond(eq(stateMaster, State.END), [
-            set(translationMasterY, 0),
-            set(translationMaster.y, timing({ from: translationMaster.y, to: sizeView.height }))
-        ])
-    ], [stateMaster])
-
     useCode(() => [
         cond(and(eq(stateVideo, State.END), lessOrEq(translateXWrap, -MAX_GESTURE)), [
             call([], ([]) => {
@@ -127,28 +103,24 @@ const You_tubeComponent = () => {
 
     return (
         <Block block onLayout={_onLayout}>
-            <PanGestureHandler simultaneousHandlers={[_gesture]} ref={_masterGesture} enabled={!isRotate} {...gestureMaster}>
-                <Animated.View style={[styles.masterContainer, { width: masterW, bottom, height: masterH }]}>
-                    <PanGestureHandler ref={_gesture} simultaneousHandlers={[_masterGesture]} enabled={isRotate} {...gestureHandler}>
-                        <Animated.View style={[styles.container, { transform: [{ translateX: translateXWrap }] }]}>
-                            <Animated.View style={{
-                                width: imgW, height: imgH,
-                                transform: [
-                                    { translateX },
-                                    { translateY },
-                                    { rotate: toRad(rotate) },
-                                    { scale }
-                                ]
-                            }}>
-                                <ImageRemote style={[styles.img]} resizeMode={'cover'} imgSource={'https://images.unsplash.com/photo-1532974297617-c0f05fe48bff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80'} />
-                                <Animated.View style={[styles.button, { opacity: opacityButton }]}>
-                                    <TouchableOpacity activeOpacity={0.9} onPress={_onToggle}>
-                                        <Icon style={[styles.icon]} icon={isRotate ? 'collapse' : 'expand'} />
-                                    </TouchableOpacity>
-                                </Animated.View>
-                            </Animated.View>
+            <PanGestureHandler ref={_gesture} simultaneousHandlers={_masterGesture} enabled={isRotate} {...gestureHandler}>
+                <Animated.View style={[styles.container, { transform: [{ translateX: translateXWrap }] }]}>
+                    <Animated.View style={{
+                        width: imgW, height: imgH,
+                        transform: [
+                            { translateX },
+                            { translateY },
+                            { rotate: toRad(rotate) },
+                            { scale }
+                        ]
+                    }}>
+                        <ImageRemote style={[styles.img]} resizeMode={'cover'} imgSource={'https://images.unsplash.com/photo-1532974297617-c0f05fe48bff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80'} />
+                        <Animated.View style={[styles.button]}>
+                            <TouchableOpacity activeOpacity={0.9} onPress={_onToggle}>
+                                <Icon style={[styles.icon]} icon={isRotate ? 'collapse' : 'expand'} />
+                            </TouchableOpacity>
                         </Animated.View>
-                    </PanGestureHandler>
+                    </Animated.View>
                 </Animated.View>
             </PanGestureHandler>
         </Block>
