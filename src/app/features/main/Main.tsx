@@ -48,6 +48,9 @@ const MainComponent = () => {
             case 13:
                 navigateJ(APP_SCREEN.YOU_TUBE)
                 break;
+            case 14:
+                navigateJ(APP_SCREEN.WAVE)
+                break;
             default:
                 break;
         }
@@ -68,6 +71,7 @@ const MainComponent = () => {
                 <RowButton img={'share_element'} onPress={_onPressItem} index={11} tx={'main:shareElement:txShareElement'} />
                 <RowButton img={'menu'} onPress={_onPressItem} index={12} tx={'main:circleMenu:txCircle'} />
                 <RowButton img={'you_tube'} onPress={_onPressItem} index={13} tx={'main:youtube:txTitle'} />
+                <RowButton img={'wave'} onPress={_onPressItem} index={14} tx={'main:wave'} />
             </ScrollView>
         </Block>
     )

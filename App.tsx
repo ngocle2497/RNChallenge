@@ -9,7 +9,7 @@ import codePush from 'react-native-code-push';
 
 
 const AppComponent = () => {
-    const [updating, setUpdating] = useState(true);
+    const [updating, setUpdating] = useState(false);
     const checkUpdate = async () => {
         await codePush.sync(
             { installMode: codePush.InstallMode.ON_NEXT_RESTART },
@@ -28,7 +28,7 @@ const AppComponent = () => {
         );
     };
     useEffect(() => {
-        checkUpdate();
+        // checkUpdate();
     }, []);
     return updating ? null : (
         <SafeAreaProvider>
@@ -44,5 +44,5 @@ const codePushOption = {
     checkFrequency: codePush.CheckFrequency.ON_APP_START,
     installMode: codePush.InstallMode.ON_NEXT_RESTART,
 };
+// export const App = memo(AppComponent, isEqual)
 export const App = memo(AppComponent, isEqual)
-export const MyApp = App

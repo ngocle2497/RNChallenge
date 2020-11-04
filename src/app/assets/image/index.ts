@@ -48,7 +48,8 @@ export const images = {
     telegram: require('./source/telegram.png'),
     menu: require('./source/menu.png'),
     share_element: require('./source/share_element.png'),
-    you_tube: require('./source/youtube.png')
+    you_tube: require('./source/youtube.png'),
+    wave: require('./source/wave.png')
 };
 
 export type ImageTypes = keyof typeof images;

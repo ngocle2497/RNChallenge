@@ -2,8 +2,7 @@ import React, { memo, useEffect, useState } from 'react'
 import { StyleSheet } from 'react-native'
 import isEqual from 'react-fast-compare';
 import { Block } from '@components';
-import Animated, { repeat, withTiming, useAnimatedStyle, delay, useSharedValue, EasingNode } from 'react-native-reanimated';
-import { translateZ } from '@animated';
+import Animated, { withRepeat, withTiming, useAnimatedStyle, useSharedValue } from 'react-native-reanimated';
 
 const SIZE_BOX = 250
 
@@ -113,7 +112,7 @@ const CircleChildren = memo(({ index, started }: CircleChildrenProps) => {
     useEffect(() => {
         if (started) {
             setTimeout(() => {
-                translateY.value = repeat(withTiming(200, { duration: 500, easing: linear }), -1, true)
+                translateY.value = withRepeat(withTiming(200, { duration: 500, easing: linear }), -1, true)
 
             }, Math.abs(index - 13) * 50)
         }

@@ -22,6 +22,7 @@ import { Telegram } from '@features/children/telegram/Telegram'
 import { CircleMenu } from '@features/children/circleMenu/CircleMenu'
 import { ShareElement } from '@features/children/shareElement/ShareElementRoute'
 import { You_tube } from '@features/children/youtube/Youtube'
+import { Wave } from '@features/children/wave/Wave'
 
 const MainStack = createStackNavigator()
 const styles = StyleSheet.create({
@@ -85,6 +86,9 @@ const circleMenuOption: StackNavigationOptions = {
 const youtubeOption: StackNavigationOptions = {
     headerTitle: "Youtube Transition"
 }
+const waveOption: StackNavigationOptions = {
+    headerTitle: "Wave Transition"
+}
 const AppNavigationComponent = () => {
     useEffect(() => {
         SplashScreen.hide()
@@ -107,6 +111,7 @@ const AppNavigationComponent = () => {
                 <MainStack.Screen options={StyleSheet.flatten([baseOption, circleMenuOption])} name={APP_SCREEN.CIRCLE_MENU} component={CircleMenu} />
                 <MainStack.Screen options={StyleSheet.flatten([baseOption, shareElementMenuOption, { gestureEnabled: false }])} name={APP_SCREEN.SHARE_ELEMENT} component={ShareElement} />
                 <MainStack.Screen options={StyleSheet.flatten([baseOption, youtubeOption])} name={APP_SCREEN.YOU_TUBE} component={You_tube} />
+                <MainStack.Screen options={StyleSheet.flatten([baseOption, waveOption])} name={APP_SCREEN.WAVE} component={Wave} />
             </MainStack.Navigator>
         </NavigationContainer>
     )
