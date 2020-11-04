@@ -59,6 +59,7 @@
         "youtube": {
             "txTitle": "Youtube Transition"
         },
-        "wave":"Wave"
+        "wave":"Wave",
+        "indicator":"Indicator"
     }
 }

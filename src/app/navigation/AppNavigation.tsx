@@ -23,6 +23,7 @@ import { CircleMenu } from '@features/children/circleMenu/CircleMenu'
 import { ShareElement } from '@features/children/shareElement/ShareElementRoute'
 import { You_tube } from '@features/children/youtube/Youtube'
 import { Wave } from '@features/children/wave/Wave'
+import { Indicator } from '@features/children/indicator/Indicator'
 
 const MainStack = createStackNavigator()
 const styles = StyleSheet.create({
@@ -89,6 +90,9 @@ const youtubeOption: StackNavigationOptions = {
 const waveOption: StackNavigationOptions = {
     headerTitle: "Wave Transition"
 }
+const indicatorOption: StackNavigationOptions = {
+    headerTitle: "Indicator Animation"
+}
 const AppNavigationComponent = () => {
     useEffect(() => {
         SplashScreen.hide()
@@ -112,6 +116,7 @@ const AppNavigationComponent = () => {
                 <MainStack.Screen options={StyleSheet.flatten([baseOption, shareElementMenuOption, { gestureEnabled: false }])} name={APP_SCREEN.SHARE_ELEMENT} component={ShareElement} />
                 <MainStack.Screen options={StyleSheet.flatten([baseOption, youtubeOption])} name={APP_SCREEN.YOU_TUBE} component={You_tube} />
                 <MainStack.Screen options={StyleSheet.flatten([baseOption, waveOption])} name={APP_SCREEN.WAVE} component={Wave} />
+                <MainStack.Screen options={StyleSheet.flatten([baseOption, indicatorOption])} name={APP_SCREEN.INDICATOR} component={Indicator} />
             </MainStack.Navigator>
         </NavigationContainer>
     )
