@@ -53,10 +53,10 @@ const styles = StyleSheet.create({
     }
 });
 
-const LineIndicator = memo(({ arrWidthX, scrollX, screenWidth }: { screenWidth: number, arrWidthX: { width: number, x: number }[], scrollX: Animated.Value<number> }) => {
+const LineIndicator = memo(({ arrWidthX, scrollX, screenWidth }: { screenWidth: number, arrWidthX: { width: number, x: number, id: number }[], scrollX: Animated.Value<number> }) => {
     const inputRange = useMemo(() => data.map((_, i) => i * screenWidth), [screenWidth])
-    const width = interpolateNode(scrollX, { inputRange: inputRange, outputRange: arrWidthX.map(x => x.width) })
-    const translateX = interpolateNode(scrollX, { inputRange: inputRange, outputRange: arrWidthX.map(x => x.x) })
+    const width = interpolateNode(scrollX, { inputRange: inputRange, outputRange: arrWidthX.sort((a, b) => a.id - b.id).map(x => x.width) })
+    const translateX = interpolateNode(scrollX, { inputRange: inputRange, outputRange: arrWidthX.sort((a, b) => a.id - b.id).map(x => x.x) })
     const opacity = useValue(0)
     const backgroundColor = interpolateColors(scrollX, { inputRange, outputColorRange: data.map(x => x.color) })
     useCode(() => [set(opacity, timing({ to: 1 }))], [])
@@ -65,9 +65,9 @@ const LineIndicator = memo(({ arrWidthX, scrollX, screenWidth }: { screenWidth: 
     )
 }, isEqual)
 
-const Tab = memo(({ item, onChange }: { item: ItemData, onChange: (width: number, x: number) => void }) => {
+const Tab = memo(({ item, onChange, index }: { item: ItemData, index: number, onChange: (width: number, x: number, id: number) => void }) => {
     const _onLayout = useCallback(({ nativeEvent: { layout: { width, x } } }: LayoutChangeEvent) => {
-        onChange(width, x)
+        onChange(width, x, index)
     }, [])
     return (
         <Text onLayout={_onLayout} style={[styles.text]}>{item.category}</Text>
@@ -75,11 +75,11 @@ const Tab = memo(({ item, onChange }: { item: ItemData, onChange: (width: number
 }, isEqual)
 
 const Tabs = memo(({ scrollX, screenWidth }: { screenWidth: number, scrollX: Animated.Value<number> }) => {
-    const [arrWidthX, setArrWidthX] = useState<{ width: number, x: number }[]>([])
-    const _onChangeLayout = useCallback((width: number, x: number) => {
-        setArrWidthX(ar => ar.concat([{ width, x }]))
+    const [arrWidthX, setArrWidthX] = useState<{ width: number, x: number, id: number }[]>([])
+    const _onChangeLayout = useCallback((width: number, x: number, id: number) => {
+        setArrWidthX(ar => ar.concat([{ width, x, id }]))
     }, [])
-    const _renderItem = useCallback((item: ItemData) => <Tab key={item.id} {...{ item, onChange: _onChangeLayout }} />, [])
+    const _renderItem = useCallback((item: ItemData, index: number) => <Tab key={item.id} {...{ index, item, onChange: _onChangeLayout }} />, [])
     return (
         <Block pointerEvents={'none'} direction={'row'} marginTop={50} style={[styles.tabs]} justifyContent={'space-evenly'} block>
             {data.map(_renderItem)}
@@ -105,7 +105,7 @@ const IndicatorComponent = () => {
             <AnimatedFlatList
                 scrollEventThrottle={16}
                 onScroll={onScrollEvent({ x: scrollX })}
-                removeClippedSubviews={false}
+                // removeClippedSubviews={false}
                 data={data}
                 renderItem={_renderItem}
                 keyExtractor={_keyExtractor}

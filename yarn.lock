@@ -1556,24 +1556,24 @@ anymatch@^3.0.3:
     normalize-path "^3.0.0"
     picomatch "^2.0.4"
 
-appcenter-analytics@3.1.2:
-  version "3.1.2"
-  resolved "https://registry.npmjs.org/appcenter-analytics/-/appcenter-analytics-3.1.2.tgz"
-  integrity sha512-uHLcAJW+rP3eO24L5gjAIVMG0Ok2MaLB9bZAdwyIVqSlo1K7ByBTfHDMz6r1RXMRRbIabgiZi+i0+WfZH2dsjA==
+appcenter-analytics@4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/appcenter-analytics/-/appcenter-analytics-4.0.0.tgz#39fca79120f2ca62b7d7afc1b1c056515b385341"
+  integrity sha512-IKLl66VUSXMMTHXJMKfL0+DV7th/AGV0dAVvS/2b0BKGsvVpy45gVPuf95ndEuWsLC7HMQJCf9K60V+vdRNvkw==
   dependencies:
-    appcenter "3.1.2"
+    appcenter "4.0.0"
 
-appcenter-crashes@3.1.2:
-  version "3.1.2"
-  resolved "https://registry.npmjs.org/appcenter-crashes/-/appcenter-crashes-3.1.2.tgz"
-  integrity sha512-G/laj2HhwFKhgEPabyWZpHA04C7hQIzLuVZmQ2EwJ8WOq5yQwQqu561gEsRFNFHY3/8Jxf9VPsG47R1254OF/A==
+appcenter-crashes@4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/appcenter-crashes/-/appcenter-crashes-4.0.0.tgz#25f1f2807efa06a843432b42a14054cb24dace87"
+  integrity sha512-UH/O5KKH9xiSsr73uUBsXwEyJKxSEgY+6A00YAh4hE7V2cZlaeBJuqIJJ9XyPWAIYFbSb6xm79vvTbKDFDK8Wg==
   dependencies:
-    appcenter "3.1.2"
+    appcenter "4.0.0"
 
-appcenter-link-scripts@3.1.2:
-  version "3.1.2"
-  resolved "https://registry.npmjs.org/appcenter-link-scripts/-/appcenter-link-scripts-3.1.2.tgz"
-  integrity sha512-L6wEqUraNYV7X9BAJ+/DvI7XedNnQrdW8cfBJI9HhgzJVAOaHEVcj4BxDQv5H7y5vpKH66G/m8CHx79YgtMPhg==
+appcenter-link-scripts@4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/appcenter-link-scripts/-/appcenter-link-scripts-4.0.0.tgz#e37d934054eb443316a0abb66cd668603431088b"
+  integrity sha512-XsIQXkmIb7t05oilr8rtH0MEkMJqoNdcTZeYVsXp34gNRzEy/aZTnHcwmDbubTLL8dURbVcw5ByoHo5EhJxyPg==
   dependencies:
     debug "4.1.1"
     glob "5.0.15"
@@ -1583,12 +1583,12 @@ appcenter-link-scripts@3.1.2:
     which "1.2.11"
     xcode "2.0.0"
 
-appcenter@3.1.2:
-  version "3.1.2"
-  resolved "https://registry.npmjs.org/appcenter/-/appcenter-3.1.2.tgz"
-  integrity sha512-69WrDb3dGiT9S9OBhz/eaC384jxXHZIPXwk9FJG8uSZgFdHo+CKw4zbbVrPAHXEPkrgstVNMCuar9XXkr7A1Bw==
+appcenter@4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/appcenter/-/appcenter-4.0.0.tgz#86122ec4eabdac8f42885dbfa3ef232ff0eca3e1"
+  integrity sha512-9TQBuC44D1W0oLximd0HrGcfpefE1+SGWLW8nZvAbPwCPEc19ugY4e+CRuoNZ7AWcFI9K5oMOJY0WFYPKvd6Sw==
   dependencies:
-    appcenter-link-scripts "3.1.2"
+    appcenter-link-scripts "4.0.0"
 
 argparse@^1.0.7:
   version "1.0.10"
@@ -2482,7 +2482,7 @@ debug@4, debug@^4.0.1, debug@^4.1.0, debug@^4.1.1:
 
 debug@4.1.1:
   version "4.1.1"
-  resolved "https://registry.npmjs.org/debug/-/debug-4.1.1.tgz"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-4.1.1.tgz#3b72260255109c6b589cee050f1d516139664791"
   integrity sha512-pYAIzeRo8J6KPEaJ0VWOh5Pzkbw/RetuzehGM7QRRX5he4fPHx2rdKMB256ehJCkX+XRQm16eZLqLNS8RSZXZw==
   dependencies:
     ms "^2.1.1"
@@ -3486,7 +3486,7 @@ glob-parent@^5.0.0:
 
 glob@5.0.15:
   version "5.0.15"
-  resolved "https://registry.npmjs.org/glob/-/glob-5.0.15.tgz"
+  resolved "https://registry.yarnpkg.com/glob/-/glob-5.0.15.tgz#1bc936b9e02f4a603fcc222ecf7633d30b8b93b1"
   integrity sha1-G8k2ueAvSmA/zCIuz3Yz0wuLk7E=
   dependencies:
     inflight "^1.0.4"
