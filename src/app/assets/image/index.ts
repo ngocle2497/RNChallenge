@@ -50,7 +50,8 @@ export const images = {
     share_element: require('./source/share_element.png'),
     you_tube: require('./source/youtube.png'),
     wave: require('./source/wave.png'),
-    indicator: require('./source/indicator.png')
+    indicator: require('./source/indicator.png'),
+    worm: require('./source/worm.png')
 };
 
 export type ImageTypes = keyof typeof images;

@@ -54,6 +54,9 @@ const MainComponent = () => {
             case 15:
                 navigateJ(APP_SCREEN.INDICATOR)
                 break;
+            case 16:
+                navigateJ(APP_SCREEN.WORM)
+                break;
             default:
                 break;
         }
@@ -76,6 +79,7 @@ const MainComponent = () => {
                 <RowButton img={'you_tube'} onPress={_onPressItem} index={13} tx={'main:youtube:txTitle'} />
                 <RowButton img={'wave'} onPress={_onPressItem} index={14} tx={'main:wave'} />
                 <RowButton img={'indicator'} onPress={_onPressItem} index={15} tx={'main:indicator'} />
+                <RowButton img={'worm'} onPress={_onPressItem} index={16} tx={'main:worm'} />
             </ScrollView>
         </Block>
     )

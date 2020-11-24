@@ -14,5 +14,6 @@ export const APP_SCREEN = {
     CIRCLE_MENU: "CIRCLE_MENU",
     YOU_TUBE: 'YOU_TUBE',
     WAVE: 'WAVE',
-    INDICATOR: 'INDICATOR'
+    INDICATOR: 'INDICATOR',
+    WORM: 'WORM'
 }

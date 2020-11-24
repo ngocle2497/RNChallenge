@@ -24,6 +24,7 @@ import { ShareElement } from '@features/children/shareElement/ShareElementRoute'
 import { You_tube } from '@features/children/youtube/Youtube'
 import { Wave } from '@features/children/wave/Wave'
 import { Indicator } from '@features/children/indicator/Indicator'
+import { Worm } from '@features/children/worm/Worm'
 
 const MainStack = createStackNavigator()
 const styles = StyleSheet.create({
@@ -93,6 +94,9 @@ const waveOption: StackNavigationOptions = {
 const indicatorOption: StackNavigationOptions = {
     headerTitle: "Indicator Animation"
 }
+const wormOption: StackNavigationOptions = {
+    headerTitle: "Worm Animation"
+}
 const AppNavigationComponent = () => {
     useEffect(() => {
         SplashScreen.hide()
@@ -117,6 +121,7 @@ const AppNavigationComponent = () => {
                 <MainStack.Screen options={StyleSheet.flatten([baseOption, youtubeOption])} name={APP_SCREEN.YOU_TUBE} component={You_tube} />
                 <MainStack.Screen options={StyleSheet.flatten([baseOption, waveOption])} name={APP_SCREEN.WAVE} component={Wave} />
                 <MainStack.Screen options={StyleSheet.flatten([baseOption, indicatorOption])} name={APP_SCREEN.INDICATOR} component={Indicator} />
+                <MainStack.Screen options={StyleSheet.flatten([baseOption, wormOption])} name={APP_SCREEN.WORM} component={Worm} />
             </MainStack.Navigator>
         </NavigationContainer>
     )

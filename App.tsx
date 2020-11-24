@@ -7,7 +7,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { View } from 'react-native';
 import codePush from 'react-native-code-push';
 
-
+console.disableYellowBox = true
 const AppComponent = () => {
     const [updating, setUpdating] = useState(false);
     const checkUpdate = async () => {
