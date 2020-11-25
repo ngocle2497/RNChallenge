@@ -7,7 +7,7 @@ import { FlatList } from 'react-native-gesture-handler'
 import Animated, { add, cond, divide, eq, floor, greaterThan, interpolateColors, multiply, sub, useValue } from 'react-native-reanimated'
 const AnimatedFlatList = Animated.createAnimatedComponent(FlatList)
 const SIZE_DOT = 12
-const SPACING = 12
+const SPACING = 15
 const styles = StyleSheet.create({
     image: {
         width: '100%',
@@ -80,7 +80,7 @@ const data: Image[] = [
 
 const Indicator = memo(({ scrollX, sizeView }: { scrollX: Animated.Value<number>, sizeView: { width: number, height: number } }) => {
     const offset = divide(scrollX, sizeView.width)
-    const maxRight = add(multiply(data.length, SIZE_DOT), multiply(sub(data.length, 1), SIZE_DOT))
+    const maxRight = add(multiply(data.length, SIZE_DOT), multiply(sub(data.length, 1), SPACING))
     const dotOffset = multiply(sub(offset, trunc(offset)), 2)
     const xPos = multiply(floor(offset), add(SIZE_DOT, SPACING))
     const left = cond(greaterThan(dotOffset, 1),
