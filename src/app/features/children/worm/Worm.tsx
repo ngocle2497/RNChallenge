@@ -1,12 +1,13 @@
-import { onScrollEvent } from '@animated'
+import { onScrollEvent, trunc, withTransition } from '@animated'
 import { Block, ImageRemote, SizeBox } from '@components'
 import React, { memo, useCallback, useState } from 'react'
 import isEqual from 'react-fast-compare'
 import { ListRenderItemInfo, LayoutChangeEvent, StyleSheet } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
-import Animated, { divide, Extrapolate, interpolateNode, multiply, useValue } from 'react-native-reanimated'
+import Animated, { add, cond, divide, eq, floor, greaterThan, interpolateColors, multiply, sub, useValue } from 'react-native-reanimated'
 const AnimatedFlatList = Animated.createAnimatedComponent(FlatList)
 const SIZE_DOT = 12
+const SPACING = 12
 const styles = StyleSheet.create({
     image: {
         width: '100%',
@@ -31,11 +32,11 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     worm: {
-        width: SIZE_DOT,
         height: SIZE_DOT,
         backgroundColor: '#fff',
         alignSelf: 'center',
         left: 0,
+        right: 0,
         position: 'absolute',
     }
 })
@@ -78,19 +79,24 @@ const data: Image[] = [
 ]
 
 const Indicator = memo(({ scrollX, sizeView }: { scrollX: Animated.Value<number>, sizeView: { width: number, height: number } }) => {
-    const page = divide(scrollX, sizeView.width)
-    const translateX = interpolateNode(scrollX, {
-        inputRange: data.map((_, i: number) => i * sizeView.width),
-        outputRange: data.map((_, i: number) => i * SIZE_DOT * 2),
-        extrapolate: Extrapolate.CLAMP
-    })
-    const scaleX = interpolateNode(scrollX, {
-        inputRange: data.map((_, i: number) => i * sizeView.width),
-        outputRange: data.map((_, i: number) => 1),
-        extrapolate: Extrapolate.CLAMP
-    })
+    const offset = divide(scrollX, sizeView.width)
+    const maxRight = add(multiply(data.length, SIZE_DOT), multiply(sub(data.length, 1), SIZE_DOT))
+    const dotOffset = multiply(sub(offset, trunc(offset)), 2)
+    const xPos = multiply(floor(offset), add(SIZE_DOT, SPACING))
+    const left = cond(greaterThan(dotOffset, 1),
+        add(xPos, multiply(add(SIZE_DOT, SPACING), sub(dotOffset, 1)))
+        , xPos
+    )
+    const right = cond(greaterThan(dotOffset, 1),
+        sub(maxRight, add(xPos, SIZE_DOT, multiply(1, add(SIZE_DOT, SPACING)))),
+        sub(maxRight, add(xPos, SIZE_DOT, multiply(dotOffset, add(SIZE_DOT, SPACING)))))
+    const backgroundColor = interpolateColors(withTransition(eq(dotOffset, 0)),
+        {
+            inputRange: [0, 1],
+            outputColorRange: ["#2ecc71", "#FFFFFF",]
+        })
     return (
-        <Animated.View style={[styles.worm, { transform: [{ translateX:multiply(page,SIZE_DOT*2) }, { scaleX }] }]} />
+        <Animated.View style={[styles.worm, { backgroundColor, right, left }]} />
     )
 }, isEqual)
 
@@ -98,12 +104,12 @@ const ItemDot = memo(({ index }: { index: number }) => {
     return (
         <Animated.View style={[styles.row]}>
             <Animated.View style={[styles.dot]} />
-            {index !== data.length - 1 && <SizeBox width={SIZE_DOT} />}
+            {index !== data.length - 1 && <SizeBox width={SPACING} />}
         </Animated.View>
     )
 }, isEqual)
 
-const ItemImage = memo(({ index, item, sizeView }: { item: Image, index: number, sizeView: { width: number, height: number } }) => {
+const ItemImage = memo(({ item, sizeView }: { item: Image, index: number, sizeView: { width: number, height: number } }) => {
     return (
         <Block width={sizeView.width} justifyContent={'center'} height={sizeView.height}>
             <ImageRemote resizeMode={'cover'} style={[styles.image]} imgSource={item.src} />

@@ -2,6 +2,12 @@ import Animated, {
     multiply, proc,
     min,
     max,
+    cond,
+    lessThan,
+    ceil,
+    floor,
+    add,
+    sub,
 } from "react-native-reanimated";
 
 export const clampV2 = (value: number, lowerValue: number, upperValue: number) => {
@@ -31,3 +37,4 @@ export const clamp = proc(
         upperBound: Animated.Adaptable<number>,
     ): Animated.Node<number> => min(max(lowerBound, value), upperBound),
 );
+export const trunc = proc((value: Animated.Adaptable<number>): Animated.Node<number> => cond(lessThan(value, 0), ceil(value), floor(value)))
