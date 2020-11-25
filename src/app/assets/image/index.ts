@@ -51,7 +51,8 @@ export const images = {
     you_tube: require('./source/youtube.png'),
     wave: require('./source/wave.png'),
     indicator: require('./source/indicator.png'),
-    worm: require('./source/worm.png')
+    worm: require('./source/worm.png'),
+    text: require('./source/text.png')
 };
 
 export type ImageTypes = keyof typeof images;

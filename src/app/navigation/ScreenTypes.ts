@@ -15,5 +15,6 @@ export const APP_SCREEN = {
     YOU_TUBE: 'YOU_TUBE',
     WAVE: 'WAVE',
     INDICATOR: 'INDICATOR',
-    WORM: 'WORM'
+    WORM: 'WORM',
+    TEXT_TICKER: 'TEXT_TICKER'
 }

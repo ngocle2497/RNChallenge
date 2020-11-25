@@ -25,6 +25,7 @@ import { You_tube } from '@features/children/youtube/Youtube'
 import { Wave } from '@features/children/wave/Wave'
 import { Indicator } from '@features/children/indicator/Indicator'
 import { Worm } from '@features/children/worm/Worm'
+import { TextTicker } from '@features/children/textTicker/TextTicker'
 
 const MainStack = createStackNavigator()
 const styles = StyleSheet.create({
@@ -97,6 +98,9 @@ const indicatorOption: StackNavigationOptions = {
 const wormOption: StackNavigationOptions = {
     headerTitle: "Worm Animation"
 }
+const textTickerOption: StackNavigationOptions = {
+    headerTitle: "Text Ticker"
+}
 const AppNavigationComponent = () => {
     useEffect(() => {
         SplashScreen.hide()
@@ -122,6 +126,7 @@ const AppNavigationComponent = () => {
                 <MainStack.Screen options={StyleSheet.flatten([baseOption, waveOption])} name={APP_SCREEN.WAVE} component={Wave} />
                 <MainStack.Screen options={StyleSheet.flatten([baseOption, indicatorOption])} name={APP_SCREEN.INDICATOR} component={Indicator} />
                 <MainStack.Screen options={StyleSheet.flatten([baseOption, wormOption])} name={APP_SCREEN.WORM} component={Worm} />
+                <MainStack.Screen options={StyleSheet.flatten([baseOption, textTickerOption])} name={APP_SCREEN.TEXT_TICKER} component={TextTicker} />
             </MainStack.Navigator>
         </NavigationContainer>
     )
