@@ -91,9 +91,7 @@ const TextItem = memo(({ item, onRemove, widthView }: { widthView: number, item:
     }
     useCode(() => onChange(clock, cond(not(clockRunning(clock)),
         call([], ([]) => {
-            console.log("Stop")
             onRemove()
-        }), call([], ([]) => {
         }))), [item])
 
     useCode(() => width !== 0 && [

@@ -1,14 +1,14 @@
-import { useEffect, useRef, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
 import {StyleSheet} from 'react-native';
 export const enhance = (arrStyle: Array<any>) => {
   return StyleSheet.flatten(arrStyle);
 };
 export function useAsyncState<T>(
   initialValue: T,
-): [T, (newValue: T, callback?: (newState: T) => void) => void] {
+): [T, (newValue: SetStateAction<T>, callback?: (newState: T) => void) => void] {
   const [state, setState] = useState(initialValue);
   const _callback = useRef<(newState: T) => void>();
-  const _setState = (newValue: T, callback?: (newState: T) => void) => {
+  const _setState = (newValue: SetStateAction<T>, callback?: (newState: T) => void) => {
     if (callback) {
       _callback.current = callback;
     }
