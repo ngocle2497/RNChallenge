@@ -1,5 +1,6 @@
-import Animated, { Clock, Value, cond, or, eq, block, spring, startClock, clockRunning, set, max, min as min1, add, defined, diff, neq, EasingNode, stopClock, timing } from "react-native-reanimated";
+import Animated, { Clock, Value, cond, or, eq, block, spring, startClock, clockRunning, set, max, min as min1, add, defined, diff, neq, EasingNode, stopClock, timing, useValue } from "react-native-reanimated";
 import { State } from "react-native-gesture-handler";
+import { useEffect, useRef } from "react";
 
 
 export const withBalloonScaleTiming = (pressState: Animated.Value<State>) => {
@@ -153,35 +154,46 @@ export const withTransition = (
     value: Animated.Node<number>,
     timingConfig: TimingConfig = {},
     gestureState: Animated.Value<State> = new Value(State.UNDETERMINED),
-  ) => {
+) => {
     const clock = new Clock();
     const state = {
-      finished: new Value(0),
-      frameTime: new Value(0),
-      position: new Value(0),
-      time: new Value(0),
+        finished: new Value(0),
+        frameTime: new Value(0),
+        position: new Value(0),
+        time: new Value(0),
     };
     const config = {
-      toValue: new Value(0),
-      duration: 250,
-      easing: EasingNode.linear,
-      ...timingConfig,
+        toValue: new Value(0),
+        duration: 250,
+        easing: EasingNode.linear,
+        ...timingConfig,
     };
     return block([
-      startClock(clock),
-      cond(neq(config.toValue, value), [
-        set(state.frameTime, 0),
-        set(state.time, 0),
-        set(state.finished, 0),
-        set(config.toValue, value),
         startClock(clock),
-      ]),
-      cond(
-        eq(gestureState, State.ACTIVE),
-        [set(state.position, value)],
-        timing(clock, state, config),
-      ),
-      cond(state.finished, stopClock(clock)),
-      state.position,
+        cond(neq(config.toValue, value), [
+            set(state.frameTime, 0),
+            set(state.time, 0),
+            set(state.finished, 0),
+            set(config.toValue, value),
+            startClock(clock),
+        ]),
+        cond(
+            eq(gestureState, State.ACTIVE),
+            [set(state.position, value)],
+            timing(clock, state, config),
+        ),
+        cond(state.finished, stopClock(clock)),
+        state.position,
     ]);
-  };
+};
+export const useTransition = (
+    state: boolean | number,
+    config: TimingConfig = {},
+) => {
+    const value: Animated.Value<number> = useValue(0)
+    useEffect(() => {
+        value.setValue(typeof state === 'boolean' ? (state ? 1 : 0) : state);
+    }, [value, state]);
+    const transition = useRef(withTransition(value, config)).current;
+    return transition;
+};
