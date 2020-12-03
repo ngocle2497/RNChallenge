@@ -1,6 +1,6 @@
 import React, { memo, useCallback, useRef, useState } from 'react'
 import isEqual from 'react-fast-compare'
-import Animated, { useAnimatedGestureHandler, useSharedValue, useAnimatedStyle, interpolate, withSpring } from 'react-native-reanimated'
+import Animated, { useAnimatedGestureHandler, runOnJS, useSharedValue, useAnimatedStyle, interpolate, withSpring } from 'react-native-reanimated'
 import { Block, Text } from '@components'
 import { StyleSheet } from 'react-native'
 import { SIZE_MENU } from './constant'
@@ -63,14 +63,14 @@ const CircleMenuComponent = () => {
         onActive: () => {
             const newValue = Math.round(selectedIndex.value + 1)
             selectedIndex.value = withSpring(newValue)
-            setIndexMenu(-newValue)
+            runOnJS(setIndexMenu)(-newValue)
         }
     })
     const _rightFlingGesture = useAnimatedGestureHandler({
         onActive: () => {
             const newValue = Math.round(selectedIndex.value - 1)
             selectedIndex.value = withSpring(Math.round(selectedIndex.value - 1))
-            setIndexMenu(-newValue)
+            runOnJS(setIndexMenu)(-newValue)
         }
     })
     const _renderItem = useCallback((item: ItemMenu, index: number, arr: ItemMenu[]) => {
