@@ -26,6 +26,7 @@ import { Wave } from '@features/children/wave/Wave'
 import { Indicator } from '@features/children/indicator/Indicator'
 import { Worm } from '@features/children/worm/Worm'
 import { TextTicker } from '@features/children/textTicker/TextTicker'
+import { StickyFooter } from '@features/children/stickyFooter/StickyFooter'
 
 const MainStack = createStackNavigator()
 const styles = StyleSheet.create({
@@ -101,6 +102,9 @@ const wormOption: StackNavigationOptions = {
 const textTickerOption: StackNavigationOptions = {
     headerTitle: "Text Ticker"
 }
+const stickerFooterOption: StackNavigationOptions = {
+    headerTitle: "Sticky Footer"
+}
 const AppNavigationComponent = () => {
     useEffect(() => {
         SplashScreen.hide()
@@ -127,6 +131,7 @@ const AppNavigationComponent = () => {
                 <MainStack.Screen options={StyleSheet.flatten([baseOption, indicatorOption])} name={APP_SCREEN.INDICATOR} component={Indicator} />
                 <MainStack.Screen options={StyleSheet.flatten([baseOption, wormOption])} name={APP_SCREEN.WORM} component={Worm} />
                 <MainStack.Screen options={StyleSheet.flatten([baseOption, textTickerOption])} name={APP_SCREEN.TEXT_TICKER} component={TextTicker} />
+                <MainStack.Screen options={StyleSheet.flatten([baseOption, stickerFooterOption])} name={APP_SCREEN.STICKY_FOOTER} component={StickyFooter} />
             </MainStack.Navigator>
         </NavigationContainer>
     )

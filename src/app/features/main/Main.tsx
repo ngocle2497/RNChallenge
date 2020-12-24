@@ -60,6 +60,9 @@ const MainComponent = () => {
             case 17:
                 navigateJ(APP_SCREEN.TEXT_TICKER)
                 break;
+            case 18:
+                navigateJ(APP_SCREEN.STICKY_FOOTER)
+                break;
             default:
                 break;
         }
@@ -84,6 +87,7 @@ const MainComponent = () => {
                 <RowButton img={'indicator'} onPress={_onPressItem} index={15} tx={'main:indicator'} />
                 <RowButton img={'worm'} onPress={_onPressItem} index={16} tx={'main:worm'} />
                 <RowButton img={'text'} onPress={_onPressItem} index={17} tx={'main:textTicker'} />
+                <RowButton img={'sticky'} onPress={_onPressItem} index={18} tx={'main:stickyFooter'} />
             </ScrollView>
         </Block>
     )

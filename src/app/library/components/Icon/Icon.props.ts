@@ -1,18 +1,25 @@
-import {ImageStyle, ViewStyle, StyleProp} from 'react-native';
-import {IconTypes} from '@assets/icon';
+import { ViewStyle, StyleProp } from 'react-native';
+import { IconTypes } from '@assets/icon';
 
 export interface IconProps {
-  /**
-   * Overwrite icon style
-   * @default undefined
-   */
-  style?: StyleProp<ImageStyle>;
 
   /**
-   * Overwrite wrap icon style
+   * Size of Icon
+   * @default 24
+   */
+  size?: number;
+
+  /**
+   * Tint color of icon
    * @default undefined
    */
-  containerStyle?: StyleProp<ViewStyle>;
+  color?: string
+
+  /**
+   * Allow onPress to icon
+   * @default undefined
+   */
+  onPress?: () => void;
 
   /**
    * Icon type

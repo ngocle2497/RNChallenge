@@ -62,6 +62,7 @@
         "wave":"Wave",
         "indicator":"Indicator",
         "worm":"Worm Pagination",
-        "textTicker":"Text Ticker"
+        "textTicker":"Text Ticker",
+        "stickyFooter":"Sticky Footer"
     }
 }
