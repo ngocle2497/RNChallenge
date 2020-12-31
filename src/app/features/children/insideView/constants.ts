@@ -10,7 +10,7 @@ export interface CardImageProps {
     source: ImageSourcePropType;
     height: number;
     width: number;
-    
+
 }
 export const Palette = {
     // first
@@ -35,7 +35,8 @@ export interface CardProps {
     title: string;
     text: string;
     image?: CardImageProps;
-    onlyOne?: boolean
+    onlyOne?: boolean;
+    layout?: { width: number, height: number }
 }
 export const example: CardProps[] = [
     {

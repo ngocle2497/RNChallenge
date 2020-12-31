@@ -1,10 +1,11 @@
 import { useInsideView } from '@common';
 import { Block, Text } from '@components';
-import React, { memo, useEffect } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import isEqual from 'react-fast-compare';
-import { StyleSheet, View, Image } from 'react-native'
+import { StyleSheet, View, Image, LayoutChangeEvent } from 'react-native'
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
 import Animated, { measure, runOnUI, useAnimatedReaction, useAnimatedRef, useAnimatedStyle, useDerivedValue, useSharedValue, withSequence, withSpring } from 'react-native-reanimated';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { CardProps, example, Palette } from './constants';
 
 const styles = StyleSheet.create({
@@ -41,8 +42,8 @@ const styles = StyleSheet.create({
     },
     img: {
         resizeMode: 'cover',
-        height:180,
-        width:'100%'
+        height: 180,
+        width: '100%'
     },
     containerImage: {
         overflow: 'hidden',
@@ -50,8 +51,8 @@ const styles = StyleSheet.create({
         borderTopLeftRadius: 16,
     }
 });
-const Wrap = ({ id, color, text, title, image, onlyOne }: CardProps) => {
-    const [ref, visible] = useInsideView<Animated.View>()
+const Wrap = ({ id, color, text, title, image, onlyOne, layout }: CardProps) => {
+    const [ref, visible] = useInsideView<Animated.View>(layout?.height)
     const wasInView = useSharedValue(false)
     const actualVisible = useDerivedValue(() => (onlyOne ? wasInView.value : visible.value))
     const scale = useDerivedValue(() => withSpring(actualVisible.value ? 1 : 0.2))
@@ -78,9 +79,15 @@ const Wrap = ({ id, color, text, title, image, onlyOne }: CardProps) => {
     )
 }
 const InSideViewComponent = () => {
+    const [layout, setLayout] = useState<{ width: number, height: number }>({ width: 0, height: 0 })
+    const _onLayout = ({ nativeEvent: { layout: { width, height } } }: LayoutChangeEvent) => {
+        setLayout({ width, height })
+        // alert(height)
+    }
     return (
-        <Block block color={'#99C24D'}>
-            {/* <ScrollView contentContainerStyle={styles.content}>
+        <SafeAreaView style={{ flex: 1 }}>
+            <Block block color={'#99C24D'} onLayout={_onLayout}>
+                {/* <ScrollView contentContainerStyle={styles.content}>
                 {example.map((card, index) => (
                     <Wrap
                         key={index}
@@ -88,18 +95,16 @@ const InSideViewComponent = () => {
                     />
                 ))}
             </ScrollView> */}
-            <FlatList data={example} renderItem={({ item, index }) => <Wrap
-                key={index}
-                {...item}
-            />} contentContainerStyle={styles.content}>
-                {example.map((card, index) => (
-                    <Wrap
-                        key={index}
-                        {...card}
-                    />
-                ))}
-            </FlatList>
-        </Block>
+                <FlatList
+                    data={example}
+                    renderItem={({ item, index }) =>
+                        <Wrap
+                            layout={layout}
+                            key={index}
+                            {...item}
+                        />} contentContainerStyle={styles.content} />
+            </Block>
+        </SafeAreaView>
     )
 }
 
