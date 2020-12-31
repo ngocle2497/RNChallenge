@@ -27,6 +27,7 @@ import { Indicator } from '@features/children/indicator/Indicator'
 import { Worm } from '@features/children/worm/Worm'
 import { TextTicker } from '@features/children/textTicker/TextTicker'
 import { StickyFooter } from '@features/children/stickyFooter/StickyFooter'
+import { InSideView } from '@features/children/insideView/InSideView'
 
 const MainStack = createStackNavigator()
 const styles = StyleSheet.create({
@@ -105,6 +106,10 @@ const textTickerOption: StackNavigationOptions = {
 const stickerFooterOption: StackNavigationOptions = {
     headerTitle: "Sticky Footer"
 }
+const insideViewOption: StackNavigationOptions = {
+    headerTitle: "Inside View",
+    headerShown:false
+}
 const AppNavigationComponent = () => {
     useEffect(() => {
         SplashScreen.hide()
@@ -132,6 +137,7 @@ const AppNavigationComponent = () => {
                 <MainStack.Screen options={StyleSheet.flatten([baseOption, wormOption])} name={APP_SCREEN.WORM} component={Worm} />
                 <MainStack.Screen options={StyleSheet.flatten([baseOption, textTickerOption])} name={APP_SCREEN.TEXT_TICKER} component={TextTicker} />
                 <MainStack.Screen options={StyleSheet.flatten([baseOption, stickerFooterOption])} name={APP_SCREEN.STICKY_FOOTER} component={StickyFooter} />
+                <MainStack.Screen options={StyleSheet.flatten([baseOption, insideViewOption])} name={APP_SCREEN.INSIDE_VIEW} component={InSideView} />
             </MainStack.Navigator>
         </NavigationContainer>
     )

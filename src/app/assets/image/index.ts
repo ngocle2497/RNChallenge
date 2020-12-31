@@ -54,6 +54,7 @@ export const images = {
     worm: require('./source/worm.png'),
     text: require('./source/text.png'),
     sticky: require('./source/sticky.png'),
+    inside_view: require('./source/inside-view.png'),
 };
 
 export type ImageTypes = keyof typeof images;
