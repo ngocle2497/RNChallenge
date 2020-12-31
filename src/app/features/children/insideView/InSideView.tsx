@@ -1,10 +1,10 @@
 import { useInsideView } from '@common';
 import { Block, Text } from '@components';
-import React, { memo, useEffect, useState } from 'react'
+import React, { memo, useState } from 'react'
 import isEqual from 'react-fast-compare';
 import { StyleSheet, View, Image, LayoutChangeEvent } from 'react-native'
-import { FlatList, ScrollView } from 'react-native-gesture-handler';
-import Animated, { measure, runOnUI, useAnimatedReaction, useAnimatedRef, useAnimatedStyle, useDerivedValue, useSharedValue, withSequence, withSpring } from 'react-native-reanimated';
+import { FlatList } from 'react-native-gesture-handler';
+import Animated, { useAnimatedStyle, useDerivedValue, useSharedValue, withSpring } from 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { CardProps, example, Palette } from './constants';
 
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
         borderTopLeftRadius: 16,
     }
 });
-const Wrap = ({ id, color, text, title, image, onlyOne, layout }: CardProps) => {
+const Wrap = ({ color, text, title, image, onlyOne, layout }: CardProps) => {
     const [ref, visible] = useInsideView<Animated.View>(layout?.height)
     const wasInView = useSharedValue(false)
     const actualVisible = useDerivedValue(() => (onlyOne ? wasInView.value : visible.value))
@@ -82,7 +82,6 @@ const InSideViewComponent = () => {
     const [layout, setLayout] = useState<{ width: number, height: number }>({ width: 0, height: 0 })
     const _onLayout = ({ nativeEvent: { layout: { width, height } } }: LayoutChangeEvent) => {
         setLayout({ width, height })
-        // alert(height)
     }
     return (
         <SafeAreaView style={{ flex: 1 }}>
