@@ -28,24 +28,20 @@ import { Worm } from '@features/children/worm/Worm'
 import { TextTicker } from '@features/children/textTicker/TextTicker'
 import { StickyFooter } from '@features/children/stickyFooter/StickyFooter'
 import { InSideView } from '@features/children/insideView/InSideView'
+import { FireWork } from '@features/children/fireworld/FireWork'
 
 const MainStack = createStackNavigator()
-const styles = StyleSheet.create({
-    icon: {
-        width: 24,
-        height: 24,
-        tintColor: 'white'
-    }
-})
+
 const baseOption: StackNavigationOptions = {
     headerTitleAlign: "center",
     headerStyle: {
-        elevation: 0, borderBottomWidth: StyleSheet.hairlineWidth,
+        elevation: 0,
+        borderBottomWidth: StyleSheet.hairlineWidth,
         borderBottomColor: '#bbbb',
         backgroundColor: APP_COLOR
     },
     headerBackTitle: "Back",
-    headerBackImage: () => <Icon style={[styles.icon]} icon={'arrowLeft'} />,
+    headerBackImage: () => <Icon color={'white'} icon={'arrowLeft'} />,
 }
 const mainOption: StackNavigationOptions = {
     headerTitle: "Animated Challenge"
@@ -108,7 +104,11 @@ const stickerFooterOption: StackNavigationOptions = {
 }
 const insideViewOption: StackNavigationOptions = {
     headerTitle: "Inside View",
-    headerShown:false
+    headerShown: false
+}
+const fireworkViewOption: StackNavigationOptions = {
+    headerTitle: "Firework",
+    headerShown: false
 }
 const AppNavigationComponent = () => {
     useEffect(() => {
@@ -138,6 +138,7 @@ const AppNavigationComponent = () => {
                 <MainStack.Screen options={StyleSheet.flatten([baseOption, textTickerOption])} name={APP_SCREEN.TEXT_TICKER} component={TextTicker} />
                 <MainStack.Screen options={StyleSheet.flatten([baseOption, stickerFooterOption])} name={APP_SCREEN.STICKY_FOOTER} component={StickyFooter} />
                 <MainStack.Screen options={StyleSheet.flatten([baseOption, insideViewOption])} name={APP_SCREEN.INSIDE_VIEW} component={InSideView} />
+                <MainStack.Screen options={StyleSheet.flatten([baseOption, fireworkViewOption])} name={APP_SCREEN.FIREWORK} component={FireWork} />
             </MainStack.Navigator>
         </NavigationContainer>
     )

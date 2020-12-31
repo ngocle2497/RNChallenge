@@ -66,6 +66,9 @@ const MainComponent = () => {
             case 19:
                 navigateJ(APP_SCREEN.INSIDE_VIEW)
                 break;
+            case 20:
+                navigateJ(APP_SCREEN.FIREWORK)
+                break;
             default:
                 break;
         }
@@ -92,6 +95,7 @@ const MainComponent = () => {
                 <RowButton img={'text'} onPress={_onPressItem} index={17} tx={'main:textTicker'} />
                 <RowButton img={'sticky'} onPress={_onPressItem} index={18} tx={'main:stickyFooter'} />
                 <RowButton img={'inside_view'} onPress={_onPressItem} index={19} tx={'main:insideView'} />
+                <RowButton img={'firework'} onPress={_onPressItem} index={20} tx={'main:firework'} />
             </ScrollView>
         </Block>
     )

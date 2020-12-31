@@ -55,6 +55,7 @@ export const images = {
     text: require('./source/text.png'),
     sticky: require('./source/sticky.png'),
     inside_view: require('./source/inside-view.png'),
+    firework: require('./source/firework.png'),
 };
 
 export type ImageTypes = keyof typeof images;
